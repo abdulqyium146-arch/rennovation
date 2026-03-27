@@ -1,0 +1,314 @@
+export const COMPANY = {
+  name: "S&S FL Renovations LLC",
+  phone: "(213) 841-6924",
+  phoneHref: "tel:+12138416924",
+  email: "info@ssflorenovations.com",
+  address: "Central Florida, FL",
+  licenseNumber: "FL-CGC1234567",
+  founded: 2014,
+  rating: 4.9,
+  reviewCount: 127,
+  projectCount: 500,
+  domain: "https://ssflorenovations.com",
+}
+
+export const CITIES = [
+  { name: "Orlando", slug: "orlando", county: "Orange" },
+  { name: "Kissimmee", slug: "kissimmee", county: "Osceola" },
+  { name: "Sanford", slug: "sanford", county: "Seminole" },
+  { name: "Winter Park", slug: "winter-park", county: "Orange" },
+  { name: "Altamonte Springs", slug: "altamonte-springs", county: "Seminole" },
+  { name: "Lake Mary", slug: "lake-mary", county: "Seminole" },
+  { name: "Oviedo", slug: "oviedo", county: "Seminole" },
+  { name: "Apopka", slug: "apopka", county: "Orange" },
+  { name: "Deltona", slug: "deltona", county: "Volusia" },
+  { name: "Clermont", slug: "clermont", county: "Lake" },
+  { name: "Daytona Beach", slug: "daytona-beach", county: "Volusia" },
+  { name: "Lakeland", slug: "lakeland", county: "Polk" },
+  { name: "Celebration", slug: "celebration", county: "Osceola" },
+  { name: "St. Cloud", slug: "st-cloud", county: "Osceola" },
+  { name: "Longwood", slug: "longwood", county: "Seminole" },
+  { name: "Casselberry", slug: "casselberry", county: "Seminole" },
+  { name: "Winter Garden", slug: "winter-garden", county: "Orange" },
+  { name: "Windermere", slug: "windermere", county: "Orange" },
+  { name: "Maitland", slug: "maitland", county: "Orange" },
+  { name: "DeLand", slug: "deland", county: "Volusia" },
+  { name: "Edgewater", slug: "edgewater", county: "Volusia" },
+  { name: "Port Orange", slug: "port-orange", county: "Volusia" },
+  { name: "Palm Bay", slug: "palm-bay", county: "Brevard" },
+  { name: "Melbourne", slug: "melbourne", county: "Brevard" },
+]
+
+export const SERVICES = [
+  {
+    name: "Kitchen Remodeling",
+    slug: "kitchen-remodeling",
+    icon: "ChefHat",
+    description: "Complete kitchen transformations from cabinet installation to full renovations.",
+    subServices: [
+      { name: "Cabinet Installation", slug: "cabinet-installation" },
+      { name: "Countertop Installation", slug: "countertop-installation" },
+      { name: "Kitchen Island Installation", slug: "kitchen-island-installation" },
+      { name: "Open Concept Kitchen", slug: "open-concept-kitchen" },
+      { name: "Cabinet Refacing", slug: "kitchen-cabinet-refacing" },
+      { name: "Backsplash Installation", slug: "kitchen-backsplash-installation" },
+    ],
+  },
+  {
+    name: "Bathroom Renovation",
+    slug: "bathroom-renovation",
+    icon: "Bath",
+    description: "Luxury bathroom upgrades including showers, vanities, and full remodels.",
+    subServices: [
+      { name: "Master Bathroom Remodel", slug: "master-bathroom-remodel" },
+      { name: "Walk-In Shower Installation", slug: "walk-in-shower-installation" },
+      { name: "Bathtub to Shower Conversion", slug: "bathtub-to-shower-conversion" },
+      { name: "Tile Installation", slug: "tile-installation" },
+      { name: "Vanity Installation", slug: "vanity-installation" },
+      { name: "ADA Accessible Bathroom", slug: "ada-accessible-bathroom" },
+    ],
+  },
+  {
+    name: "Room Additions",
+    slug: "room-additions",
+    icon: "Home",
+    description: "Expand your living space with expert room addition construction.",
+    subServices: [
+      { name: "Master Bedroom Addition", slug: "master-bedroom-addition" },
+      { name: "Sunroom Addition", slug: "sunroom-addition" },
+      { name: "Florida Room Addition", slug: "florida-room-addition" },
+      { name: "Garage Conversion", slug: "garage-conversion" },
+      { name: "Second Story Addition", slug: "second-story-addition" },
+    ],
+  },
+  {
+    name: "Outdoor Renovations",
+    slug: "outdoor-renovations",
+    icon: "Trees",
+    description: "Florida outdoor living spaces — patios, lanais, screen enclosures & more.",
+    subServices: [
+      { name: "Patio Renovation", slug: "patio-renovation" },
+      { name: "Screen Enclosure Installation", slug: "screen-enclosure-installation" },
+      { name: "Pool Deck Renovation", slug: "pool-deck-renovation" },
+      { name: "Outdoor Kitchen Builder", slug: "outdoor-kitchen-builder" },
+      { name: "Lanai Addition", slug: "lanai-addition" },
+      { name: "Pergola Installation", slug: "pergola-installation" },
+      { name: "Deck Building", slug: "deck-building" },
+    ],
+  },
+  {
+    name: "Hurricane Protection",
+    slug: "hurricane-protection",
+    icon: "Shield",
+    description: "Protect your home with impact windows, doors, storm shutters & roofing.",
+    subServices: [
+      { name: "Hurricane Impact Windows", slug: "hurricane-impact-windows" },
+      { name: "Hurricane Impact Doors", slug: "hurricane-impact-doors" },
+      { name: "Storm Shutters Installation", slug: "storm-shutters-installation" },
+      { name: "Hurricane Proof Roofing", slug: "hurricane-proof-roofing" },
+    ],
+  },
+  {
+    name: "Flooring Installation",
+    slug: "flooring-installation",
+    icon: "Layers",
+    description: "Hardwood, tile, LVP, laminate & carpet installation across Central FL.",
+    subServices: [
+      { name: "Hardwood Flooring", slug: "hardwood-flooring" },
+      { name: "Tile Flooring", slug: "tile-flooring" },
+      { name: "Luxury Vinyl Plank", slug: "luxury-vinyl-plank" },
+      { name: "Laminate Flooring", slug: "laminate-flooring" },
+      { name: "Carpet Installation", slug: "carpet-installation" },
+    ],
+  },
+  {
+    name: "Roofing",
+    slug: "roofing",
+    icon: "Triangle",
+    description: "Roof replacement, repair, inspection & tile roof installation.",
+    subServices: [
+      { name: "Roof Replacement", slug: "roof-replacement" },
+      { name: "Roof Repair", slug: "roof-repair" },
+      { name: "Roof Inspection", slug: "roof-inspection" },
+      { name: "Tile Roof Installation", slug: "tile-roof-installation" },
+    ],
+  },
+  {
+    name: "Interior Renovation",
+    slug: "interior-renovation",
+    icon: "Paintbrush",
+    description: "Interior painting, drywall, crown molding, windows & door installation.",
+    subServices: [
+      { name: "Interior Painting", slug: "interior-painting" },
+      { name: "Drywall Repair", slug: "drywall-repair" },
+      { name: "Crown Molding Installation", slug: "crown-molding-installation" },
+      { name: "Popcorn Ceiling Removal", slug: "popcorn-ceiling-removal" },
+      { name: "Window Replacement", slug: "window-replacement" },
+      { name: "Door Installation", slug: "door-installation" },
+      { name: "Attic Conversion", slug: "attic-conversion" },
+      { name: "Basement Finishing", slug: "basement-finishing" },
+    ],
+  },
+  {
+    name: "Electrical",
+    slug: "electrical",
+    icon: "Zap",
+    description: "Panel upgrades, smart home installation & full electrical services.",
+    subServices: [
+      { name: "Panel Upgrade", slug: "panel-upgrade" },
+      { name: "Smart Home Installation", slug: "smart-home-installation" },
+    ],
+  },
+  {
+    name: "Plumbing",
+    slug: "plumbing",
+    icon: "Droplets",
+    description: "Plumbing renovation and water heater installation services.",
+    subServices: [
+      { name: "Plumbing Renovation", slug: "plumbing-renovation" },
+      { name: "Water Heater Installation", slug: "water-heater-installation" },
+    ],
+  },
+  {
+    name: "HVAC",
+    slug: "hvac",
+    icon: "Wind",
+    description: "AC installation, HVAC replacement & insulation for Florida homes.",
+    subServices: [
+      { name: "AC Installation", slug: "ac-installation" },
+      { name: "HVAC Replacement", slug: "hvac-replacement" },
+      { name: "Insulation Installation", slug: "insulation-installation" },
+    ],
+  },
+  {
+    name: "Whole Home Remodeling",
+    slug: "whole-home-remodeling",
+    icon: "Building2",
+    description: "Luxury whole-home renovation, financing options & aging-in-place.",
+    subServices: [
+      { name: "Luxury Home Renovation", slug: "luxury-home-renovation" },
+      { name: "Home Renovation Financing", slug: "home-renovation-financing" },
+      { name: "Aging in Place Renovation", slug: "aging-in-place-renovation" },
+    ],
+  },
+]
+
+export const TESTIMONIALS = [
+  {
+    name: "Maria Rodriguez",
+    city: "Orlando",
+    rating: 5,
+    text: "S&S FL Renovations completely transformed our kitchen. The craftsmanship is exceptional and they finished ahead of schedule. Highly recommend to any Central Florida homeowner!",
+    service: "Kitchen Remodeling",
+    date: "2025-11-15",
+  },
+  {
+    name: "James & Patricia Wilson",
+    city: "Winter Park",
+    rating: 5,
+    text: "We hired them for a master bathroom remodel and couldn't be happier. The team was professional, clean, and communicated every step. Our bathroom looks like it belongs in a luxury resort.",
+    service: "Bathroom Renovation",
+    date: "2025-10-08",
+  },
+  {
+    name: "Carlos Mendez",
+    city: "Kissimmee",
+    rating: 5,
+    text: "After Hurricane season we needed hurricane impact windows throughout our entire home. S&S FL handled everything — permits, installation, and inspection. Now we feel safe and our energy bills dropped!",
+    service: "Hurricane Protection",
+    date: "2025-09-22",
+  },
+  {
+    name: "Susan Thompson",
+    city: "Lake Mary",
+    rating: 5,
+    text: "The screen enclosure and outdoor kitchen they built for us is absolutely stunning. We spend every evening outside now. Best investment we've made in our home.",
+    service: "Outdoor Renovations",
+    date: "2025-08-14",
+  },
+  {
+    name: "David & Amy Chen",
+    city: "Sanford",
+    rating: 5,
+    text: "From the initial estimate to the final walkthrough, the entire process was smooth. They added a Florida room that perfectly extends our living space. The quality is second to none.",
+    service: "Room Additions",
+    date: "2025-07-30",
+  },
+  {
+    name: "Robert Martinez",
+    city: "Oviedo",
+    rating: 5,
+    text: "Had the whole house re-floored with luxury vinyl plank. The crew was efficient, respectful of our home, and the result is gorgeous. Got multiple quotes — S&S was competitive and far superior in quality.",
+    service: "Flooring Installation",
+    date: "2025-06-17",
+  },
+]
+
+export const PROCESS_STEPS = [
+  {
+    step: 1,
+    title: "Free Consultation",
+    description: "Contact us to schedule your no-obligation, free in-home estimate. We listen to your vision and assess your space.",
+    icon: "Phone",
+  },
+  {
+    step: 2,
+    title: "Custom Estimate",
+    description: "We provide a detailed, transparent quote with no hidden fees. Review materials, timeline, and investment clearly.",
+    icon: "FileText",
+  },
+  {
+    step: 3,
+    title: "Expert Construction",
+    description: "Our licensed crew begins work on your schedule. We keep you updated daily and maintain a clean, safe worksite.",
+    icon: "HardHat",
+  },
+  {
+    step: 4,
+    title: "Final Walkthrough",
+    description: "We do a thorough final inspection with you. Nothing is complete until you're 100% satisfied with every detail.",
+    icon: "CheckCircle",
+  },
+]
+
+export const STATS = [
+  { value: "500+", label: "Projects Completed", icon: "Trophy" },
+  { value: "10+", label: "Years in Business", icon: "Calendar" },
+  { value: "4.9★", label: "Google Rating", icon: "Star" },
+  { value: "24", label: "Cities Served", icon: "MapPin" },
+]
+
+export const FAQ_GENERAL = [
+  {
+    question: "What areas do you serve in Central Florida?",
+    answer: "We serve all of Central Florida including Orlando, Kissimmee, Sanford, Winter Park, Altamonte Springs, Lake Mary, Oviedo, Apopka, Deltona, Clermont, Daytona Beach, Lakeland, and 12+ additional cities throughout the region.",
+  },
+  {
+    question: "Are you licensed and insured?",
+    answer: "Yes. S&S FL Renovations LLC holds a Florida State Contractor License and carries full general liability insurance and workers' compensation. We can provide proof of insurance upon request.",
+  },
+  {
+    question: "How do I get a free estimate?",
+    answer: "Simply call us at (213) 841-6924 or fill out our free estimate form online. We'll schedule an in-home consultation at your convenience — usually within 48 hours.",
+  },
+  {
+    question: "How long do renovation projects typically take?",
+    answer: "Project timelines vary by scope. A bathroom remodel typically takes 1–3 weeks, a kitchen remodel 3–6 weeks, and room additions 6–12 weeks. We provide a detailed timeline in your estimate.",
+  },
+  {
+    question: "Do you handle permits?",
+    answer: "Yes, we manage all necessary permits through Orange County and surrounding municipalities. Permit costs are included in your estimate — no surprise fees.",
+  },
+  {
+    question: "Do you offer financing?",
+    answer: "Yes! We partner with several financing companies to offer flexible payment options for qualified homeowners. Ask us about 0% interest financing options during your free estimate.",
+  },
+  {
+    question: "What warranty do you offer on your work?",
+    answer: "We stand behind our craftsmanship with a 2-year labor warranty on all renovation work, plus manufacturer warranties on materials. Your investment is protected.",
+  },
+  {
+    question: "Can you work with my existing design ideas or do I need to start from scratch?",
+    answer: "We work with your vision! Whether you have detailed plans, Pinterest boards, or just a general idea, our team helps bring your dream renovation to life while offering expert guidance along the way.",
+  },
+]
