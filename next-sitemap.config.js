@@ -1,19 +1,10 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://centralfloridarenovations.com',
-  generateRobotsTxt: true,
+  generateRobotsTxt: false,
   sitemapSize: 7000,
   changefreq: 'weekly',
   priority: 0.7,
-  robotsTxtOptions: {
-    additionalSitemaps: [],
-    policies: [
-      {
-        userAgent: '*',
-        allow: '/',
-      },
-    ],
-  },
   exclude: ['/api/*', '/privacy', '/terms'],
   transform: async (config, path) => {
     // Boost priority for key pages
