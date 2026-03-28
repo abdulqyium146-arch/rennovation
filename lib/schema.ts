@@ -8,7 +8,7 @@ export function buildLocalBusinessSchema() {
     telephone: COMPANY.phone,
     email: COMPANY.email,
     url: COMPANY.domain,
-    logo: `${COMPANY.domain}/images/logo.png`,
+    logo: `${COMPANY.domain}/images/logo.webp`,
     image: `${COMPANY.domain}/images/og-home.jpg`,
     address: {
       "@type": "PostalAddress",
@@ -148,7 +148,7 @@ export function buildArticleSchema({
       name: COMPANY.name,
       logo: {
         "@type": "ImageObject",
-        url: `${COMPANY.domain}/images/logo.png`,
+        url: `${COMPANY.domain}/images/logo.webp`,
       },
     },
     datePublished,

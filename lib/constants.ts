@@ -2,6 +2,8 @@ export const COMPANY = {
   name: "S&S FL Renovations LLC",
   phone: "(213) 841-6924",
   phoneHref: "tel:+12138416924",
+  phone2: "(941) 267-5788",
+  phone2Href: "tel:+19412675788",
   email: "info@ssflorenovations.com",
   address: "Central Florida, FL",
   licenseNumber: "FL-CGC1234567",
@@ -10,6 +12,8 @@ export const COMPANY = {
   reviewCount: 127,
   projectCount: 500,
   domain: "https://ssflorenovations.com",
+  logo: "/images/logo.webp",
+  spanish: true, // Se Habla Español
 }
 
 export const CITIES = [
@@ -178,6 +182,18 @@ export const SERVICES = [
       { name: "AC Installation", slug: "ac-installation" },
       { name: "HVAC Replacement", slug: "hvac-replacement" },
       { name: "Insulation Installation", slug: "insulation-installation" },
+    ],
+  },
+  {
+    name: "Painting & Finishing",
+    slug: "painting-finishing",
+    icon: "Brush",
+    description: "Exterior painting, interior painting, drywall finishing & framing renovations across Central Florida.",
+    subServices: [
+      { name: "Exterior Painting", slug: "exterior-painting" },
+      { name: "Interior Painting", slug: "interior-painting" },
+      { name: "Drywall Finishing", slug: "drywall-finishing" },
+      { name: "Framing Renovations", slug: "framing-renovations" },
     ],
   },
   {

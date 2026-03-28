@@ -1,65 +1,96 @@
-import Image from "next/image";
+import type { Metadata } from "next"
+import { buildMetadata } from "@/lib/seo"
+import { COMPANY } from "@/lib/constants"
 
-export default function Home() {
+// Global components
+import TrustBar from "@/components/global/TrustBar"
+
+// Sections — ordered by conversion priority
+import HeroSection from "@/components/sections/HeroSection"
+import SocialProofBar from "@/components/sections/SocialProofBar"
+import ServicesGrid from "@/components/sections/ServicesGrid"
+import WhyChooseUs from "@/components/sections/WhyChooseUs"
+import StatsCounter from "@/components/sections/StatsCounter"
+import ProcessSteps from "@/components/sections/ProcessSteps"
+import FinancingBanner from "@/components/sections/FinancingBanner"
+import ProjectGallery from "@/components/sections/ProjectGallery"
+import TestimonialsCarousel from "@/components/sections/TestimonialsCarousel"
+import ServiceAreaMap from "@/components/sections/ServiceAreaMap"
+import FAQAccordion from "@/components/sections/FAQAccordion"
+import BlogPreview from "@/components/sections/BlogPreview"
+import CTASection from "@/components/sections/CTASection"
+
+export const metadata: Metadata = buildMetadata({
+  title: "Home Renovation Contractor in Orlando & Central Florida",
+  description: `${COMPANY.name} — Orlando's top-rated home renovation contractor. Kitchen, bathroom, outdoor & full-home remodeling. Licensed & insured. 500+ projects. Free estimate: ${COMPANY.phone}.`,
+  slug: "",
+  keywords: [
+    "home renovation Orlando FL",
+    "home remodeling Central Florida",
+    "kitchen remodeling Orlando",
+    "bathroom renovation Orlando",
+    "renovation contractor Central Florida",
+    "licensed contractor Orlando",
+  ],
+})
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+    <>
+      {/* ── Top bar: license, BBB, hours, Google rating ── */}
+      <TrustBar />
+
+      {/* ── SECTION 1: Hero — full viewport, geo-targeted H1, inline social proof ── */}
+      <HeroSection
+        heading="Orlando's #1 Home Renovation Contractor"
+        subheading={`Expert kitchen, bathroom, outdoor & full-home renovations across Orlando, Kissimmee, Winter Park, Sanford and all of Central Florida. Licensed, insured, and trusted by ${COMPANY.projectCount}+ homeowners since ${COMPANY.founded}.`}
+      />
+
+      {/* ── SECTION 2: Social proof bar — immediately below hero fold ── */}
+      <SocialProofBar />
+
+      {/* ── SECTION 3: Services grid — what we offer, with sub-service previews ── */}
+      <ServicesGrid
+        title="Home Renovation Services in Central Florida"
+        subtitle={`${COMPANY.projectCount}+ completed renovations. From a single bathroom refresh to a complete whole-home transformation — all performed by our licensed in-house crew.`}
+      />
+
+      {/* ── SECTION 4: Why us — split layout with inline review + two CTAs ── */}
+      <WhyChooseUs />
+
+      {/* ── SECTION 5: Stats — animated, clickable to detail pages ── */}
+      <StatsCounter />
+
+      {/* ── SECTION 6: Process — 4 steps with connectors and CTA ── */}
+      <ProcessSteps />
+
+      {/* ── SECTION 7: Financing — intercept price-sensitive visitors ── */}
+      <FinancingBanner />
+
+      {/* ── SECTION 8: Gallery — visual proof, links to gallery page ── */}
+      <ProjectGallery />
+
+      {/* ── SECTION 9: Testimonials — 3-up on desktop with Google branding ── */}
+      <TestimonialsCarousel />
+
+      {/* ── SECTION 10: Service area — county-grouped cities with map visual ── */}
+      <ServiceAreaMap />
+
+      {/* ── SECTION 11: FAQ — two-column, schema-marked ── */}
+      <FAQAccordion
+        title="Home Renovation Questions — Answered"
+        twoColumn
+      />
+
+      {/* ── SECTION 12: Blog — 3 priority posts ── */}
+      <BlogPreview />
+
+      {/* ── SECTION 13: Final CTA — urgency + financing reminder ── */}
+      <CTASection
+        title="Ready to Start Your Renovation?"
+        subtitle={`Join ${COMPANY.projectCount}+ happy Central Florida homeowners. Free estimates — respond within 24 hours. Financing available.`}
+        showFinancing
+      />
+    </>
+  )
 }
