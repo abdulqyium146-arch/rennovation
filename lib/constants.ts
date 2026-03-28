@@ -4,14 +4,14 @@ export const COMPANY = {
   phoneHref: "tel:+12138416924",
   phone2: "(941) 267-5788",
   phone2Href: "tel:+19412675788",
-  email: "info@ssflorenovations.com",
+  email: "info@centralfloridarenovations.com",
   address: "Central Florida, FL",
   licenseNumber: "FL-CGC1234567",
   founded: 2014,
   rating: 4.9,
   reviewCount: 127,
   projectCount: 500,
-  domain: "https://ssflorenovations.com",
+  domain: "https://centralfloridarenovations.com",
   logo: "/images/logo.webp",
   spanish: true, // Se Habla Español
 }

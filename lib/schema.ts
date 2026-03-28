@@ -5,6 +5,7 @@ export function buildLocalBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     name: COMPANY.name,
+    alternateName: "Central Florida Renovations",
     telephone: COMPANY.phone,
     email: COMPANY.email,
     url: COMPANY.domain,
@@ -42,7 +43,8 @@ export function buildWebsiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: COMPANY.name,
+    name: "Central Florida Renovations",
+    alternateName: COMPANY.name,
     url: COMPANY.domain,
     potentialAction: {
       "@type": "SearchAction",

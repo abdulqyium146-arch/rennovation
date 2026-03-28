@@ -35,22 +35,24 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: `${COMPANY.name} | Central Florida Home Renovation Experts`,
-    template: `%s | ${COMPANY.name}`,
+    default: "Central Florida Renovations | Home Remodeling Contractor Orlando FL",
+    template: "%s | Central Florida Renovations",
   },
   description:
-    "S&S FL Renovations LLC — Central Florida's premier home renovation contractor. Kitchen, bathroom, outdoor & full-home remodeling in Orlando & surrounding cities. Licensed, insured, 500+ projects. Call (213) 841-6924.",
+    "Central Florida Renovations — Orlando's top-rated home renovation contractor. Kitchen remodeling, bathroom renovation, room additions, outdoor living & full-home remodels. Licensed, insured, 500+ projects completed. Free estimate: (213) 841-6924.",
   metadataBase: new URL(COMPANY.domain),
   keywords: [
-    "home renovation Orlando FL",
-    "home remodeling Central Florida",
+    "central florida renovations",
+    "home renovation Central Florida",
+    "home remodeling Orlando FL",
     "kitchen remodeling Orlando",
     "bathroom renovation Orlando",
-    "contractor Central Florida",
-    "S&S FL Renovations",
+    "room additions Central Florida",
+    "home renovation contractor Florida",
+    "licensed renovation contractor Orlando",
   ].join(", "),
   openGraph: {
-    siteName: COMPANY.name,
+    siteName: "Central Florida Renovations",
     locale: "en_US",
     type: "website",
   },

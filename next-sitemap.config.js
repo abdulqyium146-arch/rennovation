@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://ssflorenovations.com',
+  siteUrl: 'https://centralfloridarenovations.com',
   generateRobotsTxt: true,
   sitemapSize: 7000,
   changefreq: 'weekly',

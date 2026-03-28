@@ -22,7 +22,7 @@ export function buildMetadata({
   const ogImage = image ?? `${COMPANY.domain}/og/default.jpg`
 
   return {
-    title: `${title} | ${COMPANY.name}`,
+    title: `${title} | Central Florida Renovations`,
     description,
     keywords: keywords.join(", "),
     metadataBase: new URL(COMPANY.domain),
@@ -30,10 +30,10 @@ export function buildMetadata({
       canonical: url,
     },
     openGraph: {
-      title: `${title} | ${COMPANY.name}`,
+      title: `${title} | Central Florida Renovations`,
       description,
       url,
-      siteName: COMPANY.name,
+      siteName: "Central Florida Renovations",
       images: [
         {
           url: ogImage,
@@ -47,7 +47,7 @@ export function buildMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ${COMPANY.name}`,
+      title: `${title} | Central Florida Renovations`,
       description,
       images: [ogImage],
     },
@@ -64,14 +64,14 @@ export function buildMetadata({
 export function buildServiceMetadata(serviceName: string, slug: string): Metadata {
   return buildMetadata({
     title: `${serviceName} in Central Florida`,
-    description: `Professional ${serviceName.toLowerCase()} services in Orlando & Central Florida. Licensed, insured, 500+ projects. Free estimate — call ${COMPANY.phone}.`,
+    description: `Expert ${serviceName.toLowerCase()} in Orlando & Central Florida. Central Florida Renovations — licensed, insured, 500+ projects completed. Free estimate: ${COMPANY.phone}.`,
     slug: `services/${slug}`,
     keywords: [
       `${serviceName.toLowerCase()} Orlando`,
       `${serviceName.toLowerCase()} Central Florida`,
       `${serviceName.toLowerCase()} contractor Florida`,
-      "home renovation Florida",
-      "S&S FL Renovations",
+      "central florida renovations",
+      "home renovation Orlando FL",
     ],
   })
 }
@@ -79,14 +79,15 @@ export function buildServiceMetadata(serviceName: string, slug: string): Metadat
 export function buildLocationMetadata(cityName: string, slug: string): Metadata {
   return buildMetadata({
     title: `Home Renovation Contractor in ${cityName}, FL`,
-    description: `Top-rated home renovation contractor in ${cityName}, FL. Kitchen, bathroom, outdoor & full home remodeling. Licensed & insured. Free estimate — ${COMPANY.phone}.`,
+    description: `Top-rated home renovation contractor in ${cityName}, FL — Central Florida Renovations. Kitchen, bathroom, outdoor & full home remodeling. Licensed & insured. Free estimate: ${COMPANY.phone}.`,
     slug: `locations/${slug}`,
     keywords: [
       `home renovation ${cityName}`,
       `home remodeling ${cityName} FL`,
-      `contractor ${cityName} Florida`,
+      `renovation contractor ${cityName} Florida`,
       `kitchen remodeling ${cityName}`,
       `bathroom renovation ${cityName}`,
+      "central florida renovations",
     ],
   })
 }

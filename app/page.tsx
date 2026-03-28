@@ -21,10 +21,11 @@ import BlogPreview from "@/components/sections/BlogPreview"
 import CTASection from "@/components/sections/CTASection"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Home Renovation Contractor in Orlando & Central Florida",
-  description: `${COMPANY.name} — Orlando's top-rated home renovation contractor. Kitchen, bathroom, outdoor & full-home remodeling. Licensed & insured. 500+ projects. Free estimate: ${COMPANY.phone}.`,
+  title: "Home Renovation Contractor Orlando & Central Florida",
+  description: `Central Florida Renovations — Orlando's #1 home renovation contractor. Kitchen remodeling, bathroom renovation, room additions & outdoor living. Licensed, insured, 500+ projects. Free estimate: ${COMPANY.phone}.`,
   slug: "",
   keywords: [
+    "central florida renovations",
     "home renovation Orlando FL",
     "home remodeling Central Florida",
     "kitchen remodeling Orlando",
