@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# large media (serve via CDN)
+app/gallery/*.mov
+app/gallery/*.mp4
