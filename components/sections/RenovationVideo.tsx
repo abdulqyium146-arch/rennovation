@@ -80,8 +80,6 @@ export default function RenovationVideo({
               playsInline
               preload="none"
               poster={VIDEO_THUMBNAIL}
-              /* Performance */
-              loading="lazy"
               /* Layout */
               className="w-full aspect-video object-cover"
             >
