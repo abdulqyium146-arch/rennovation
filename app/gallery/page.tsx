@@ -4,6 +4,7 @@ import BreadcrumbNav from "@/components/global/BreadcrumbNav"
 import TrustBar from "@/components/global/TrustBar"
 import CTASection from "@/components/sections/CTASection"
 import ProjectGallery from "@/components/sections/ProjectGallery"
+import RenovationVideo from "@/components/sections/RenovationVideo"
 
 export const metadata: Metadata = buildMetadata({
   title: "Project Gallery — Home Renovations in Central Florida",
@@ -30,6 +31,7 @@ export default function GalleryPage() {
       </section>
 
       <ProjectGallery title="Featured Projects" showAll />
+      <RenovationVideo />
       <CTASection
         title="Love What You See?"
         subtitle="Let's build something amazing for your home. Get your free estimate today."
