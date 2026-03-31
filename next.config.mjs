@@ -1,4 +1,12 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+import path from "path"
+import { fileURLToPath } from "url"
 
-export default nextConfig;
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Pin the project root so Next.js doesn't pick up a parent-directory lockfile
+  outputFileTracingRoot: __dirname,
+}
+
+export default nextConfig
