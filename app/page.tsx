@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Script from "next/script"
 import { buildMetadata } from "@/lib/seo"
 import { COMPANY } from "@/lib/constants"
 
@@ -35,9 +36,34 @@ export const metadata: Metadata = buildMetadata({
   ],
 })
 
+const heroImageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  contentUrl: `${COMPANY.domain}/gallery/home-renovation-interior-central-florida.webp`,
+  name: "Interior Home Renovation — Living Room with Fireplace & Built-ins | Central Florida Renovations",
+  description:
+    "Completed interior living room renovation featuring a fireplace with white mantel, custom built-in shelving, and recessed lighting. Renovated by Central Florida Renovations in Orlando, FL.",
+  caption: "Interior renovation completed by Central Florida Renovations — Orlando, FL",
+  representativeOfPage: true,
+  width: 620,
+  height: 400,
+  encodingFormat: "image/webp",
+  author: {
+    "@type": "Organization",
+    name: "Central Florida Renovations",
+    url: COMPANY.domain,
+  },
+  license: COMPANY.domain,
+}
+
 export default function HomePage() {
   return (
     <>
+      <Script
+        id="hero-image-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(heroImageSchema) }}
+      />
       {/* ── Top bar: license, BBB, hours, Google rating ── */}
       <TrustBar />
 

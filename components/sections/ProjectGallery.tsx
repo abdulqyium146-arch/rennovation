@@ -4,6 +4,13 @@ import { ArrowRight } from "lucide-react"
 
 const PROJECTS = [
   {
+    label: "Interior Living Room Renovation",
+    location: "Orlando, FL",
+    src: "/gallery/home-renovation-interior-central-florida.webp",
+    alt: "Completed interior living room renovation with fireplace, built-in shelving and recessed lighting — Central Florida Renovations Orlando FL",
+    priority: true,
+  },
+  {
     label: "Kitchen Remodel",
     location: "Orlando, FL",
     src: "/gallery/home-renovation-project-collage-central-florida.webp",
