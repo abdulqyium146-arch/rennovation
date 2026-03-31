@@ -23,7 +23,7 @@ export function buildLocalBusinessSchema() {
       containedInPlace: { "@type": "State", name: "Florida" },
     })),
     priceRange: "$$-$$$",
-    openingHours: "Mo-Sa 08:00-18:00",
+    openingHours: "Mo Tu We Th Fr Sa Su 00:00-23:59",
     foundingDate: String(COMPANY.founded),
     aggregateRating: {
       "@type": "AggregateRating",

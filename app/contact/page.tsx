@@ -39,7 +39,7 @@ export default function ContactPage() {
                   title: "Call or Text",
                   value: COMPANY.phone,
                   href: COMPANY.phoneHref,
-                  sub: "Mon–Sat, 8AM–6PM",
+                  sub: "Available 24/7",
                 },
                 {
                   icon: Mail,
@@ -58,9 +58,9 @@ export default function ContactPage() {
                 {
                   icon: Clock,
                   title: "Business Hours",
-                  value: "Mon–Sat: 8AM–6PM",
+                  value: "Open 24/7",
                   href: null,
-                  sub: "Sunday: Emergency calls only",
+                  sub: "Always available — call anytime",
                 },
               ].map(({ icon: Icon, title, value, href, sub }) => (
                 <div key={title} className="bg-white rounded-xl p-5 flex items-start gap-4 shadow-sm border border-gray-100">

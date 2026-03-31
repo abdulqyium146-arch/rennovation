@@ -76,7 +76,7 @@ export default function FreeEstimatePage() {
 
               <div className="bg-[#1B2B4B] text-white rounded-xl p-6 flex flex-col gap-3">
                 <p className="font-display font-bold text-lg">Prefer to call?</p>
-                <p className="text-gray-300 text-sm">Our team is available Mon–Sat, 8AM–6PM</p>
+                <p className="text-gray-300 text-sm">Our team is available 24/7</p>
                 <a
                   href={COMPANY.phoneHref}
                   className="flex items-center gap-2 text-[#D4922A] font-bold text-xl hover:text-[#F0B84A] transition-colors"

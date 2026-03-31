@@ -30,7 +30,7 @@ export default function TrustBar() {
               { icon: ShieldCheck, text: "Licensed & Insured" },
               { icon: BadgeCheck, text: "FL " + COMPANY.licenseNumber },
               { icon: Award, text: "BBB A+ Rated" },
-              { icon: Clock, text: "Mon–Sat 8AM–6PM" },
+              { icon: Clock, text: "Open 24/7" },
             ].map(({ icon: Icon, text }) => (
               <div key={text} className="flex items-center gap-1.5 text-xs text-gray-400">
                 <Icon size={12} className="text-[#D4922A] shrink-0" />

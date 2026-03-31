@@ -127,7 +127,7 @@ export default function FAQAccordion({
             </div>
             <div>
               <p className={`font-bold text-sm ${dark ? "text-white" : "text-[#1B2B4B]"}`}>Still have questions?</p>
-              <p className={`text-xs ${dark ? "text-gray-400" : "text-gray-500"}`}>Our team responds within 2 hours, Mon–Sat.</p>
+              <p className={`text-xs ${dark ? "text-gray-400" : "text-gray-500"}`}>Our team responds within 2 hours, 24/7.</p>
             </div>
           </div>
           <div className="flex gap-3">
