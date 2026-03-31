@@ -154,26 +154,6 @@ export const SERVICES = [
     ],
   },
   {
-    name: "Electrical",
-    slug: "electrical",
-    icon: "Zap",
-    description: "Panel upgrades, smart home installation & full electrical services.",
-    subServices: [
-      { name: "Panel Upgrade", slug: "panel-upgrade" },
-      { name: "Smart Home Installation", slug: "smart-home-installation" },
-    ],
-  },
-  {
-    name: "Plumbing",
-    slug: "plumbing",
-    icon: "Droplets",
-    description: "Plumbing renovation and water heater installation services.",
-    subServices: [
-      { name: "Plumbing Renovation", slug: "plumbing-renovation" },
-      { name: "Water Heater Installation", slug: "water-heater-installation" },
-    ],
-  },
-  {
     name: "HVAC",
     slug: "hvac",
     icon: "Wind",
