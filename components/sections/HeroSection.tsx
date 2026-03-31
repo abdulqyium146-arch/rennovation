@@ -143,24 +143,25 @@ export default function HeroSection({
             className="hidden lg:flex flex-col gap-5"
           >
             {/* ── Featured renovation photo (LCP element) ── */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+            <div className="relative h-[280px] rounded-2xl overflow-hidden shadow-2xl group">
               <Image
                 src="/gallery/home-renovation-interior-central-florida.webp"
                 alt="Completed interior home renovation — living room with fireplace, built-in shelving and recessed lighting by Central Florida Renovations, Orlando FL"
-                width={620}
-                height={400}
+                fill
                 priority
                 sizes="(max-width: 1024px) 0vw, 50vw"
-                className="w-full object-cover rounded-2xl group-hover:scale-[1.02] transition-transform duration-700"
+                className="object-cover object-center group-hover:scale-[1.04] transition-transform duration-700"
                 itemProp="image"
               />
+              {/* Dark scrim — only bottom 30% so photo stays visible */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               {/* After badge */}
-              <span className="absolute top-4 left-4 bg-[#D4922A] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg uppercase tracking-wide">
+              <span className="absolute top-4 left-4 bg-[#D4922A] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg uppercase tracking-wide z-10">
                 ✓ Completed Project
               </span>
-              {/* Caption overlay */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/75 to-transparent px-5 py-4">
-                <p className="text-white font-semibold text-sm">Interior Living Room Renovation</p>
+              {/* Caption — bottom only */}
+              <div className="absolute bottom-0 left-0 right-0 px-5 py-3 z-10">
+                <p className="text-white font-semibold text-sm leading-tight">Interior Living Room Renovation</p>
                 <p className="text-[#D4922A] text-xs">Orlando, FL · Central Florida Renovations</p>
               </div>
             </div>
