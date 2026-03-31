@@ -36,33 +36,38 @@ export const metadata: Metadata = buildMetadata({
   ],
 })
 
-const heroImageSchema = {
+const heroVideoSchema = {
   "@context": "https://schema.org",
-  "@type": "ImageObject",
-  contentUrl: `${COMPANY.domain}/gallery/home-renovation-interior-central-florida.webp`,
-  name: "Interior Home Renovation — Living Room with Fireplace & Built-ins | Central Florida Renovations",
+  "@type": "VideoObject",
+  name: "Central Florida Home Renovation — Contractors at Work in Orlando FL | Central Florida Renovations",
   description:
-    "Completed interior living room renovation featuring a fireplace with white mantel, custom built-in shelving, and recessed lighting. Renovated by Central Florida Renovations in Orlando, FL.",
-  caption: "Interior renovation completed by Central Florida Renovations — Orlando, FL",
-  representativeOfPage: true,
-  width: 620,
-  height: 400,
-  encodingFormat: "image/webp",
-  author: {
+    "Watch Central Florida Renovations' licensed contractors performing real home renovation work in Orlando, FL — bathroom remodels, drywall, exterior paint, interior renovations and more.",
+  contentUrl: `${COMPANY.domain}/videos/central-florida-home-renovation-hero-orlando-fl.mp4`,
+  thumbnailUrl: `${COMPANY.domain}/gallery/home-renovation-interior-central-florida.webp`,
+  uploadDate: "2026-03-27T00:00:00.000Z",
+  duration: "PT1M",
+  embedUrl: COMPANY.domain,
+  keywords:
+    "home renovation Orlando FL, central florida renovations, bathroom remodel Orlando, kitchen renovation Central Florida, licensed contractor Orlando",
+  inLanguage: "en-US",
+  publisher: {
     "@type": "Organization",
     name: "Central Florida Renovations",
     url: COMPANY.domain,
+    logo: {
+      "@type": "ImageObject",
+      url: `${COMPANY.domain}/icon-512.png`,
+    },
   },
-  license: COMPANY.domain,
 }
 
 export default function HomePage() {
   return (
     <>
       <Script
-        id="hero-image-schema"
+        id="hero-video-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(heroImageSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(heroVideoSchema) }}
       />
       {/* ── Top bar: license, BBB, hours, Google rating ── */}
       <TrustBar />
