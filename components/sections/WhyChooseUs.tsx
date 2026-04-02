@@ -9,12 +9,12 @@ const REASONS = [
   {
     icon: ShieldCheck,
     title: "Licensed & Fully Insured",
-    description: "Florida State Contractor License + full general liability & workers' comp on every job. Your home and investment are protected.",
+    description: "Florida State Contractor License + full general liability & workers' comp on every job. Your Deltona or Volusia County home and investment are fully protected.",
   },
   {
     icon: Award,
     title: "10+ Years of Proven Results",
-    description: "Since 2014, we've delivered 500+ renovations across Central Florida. Our track record speaks louder than any sales pitch.",
+    description: "Since 2014, we've delivered 500+ renovation and painting projects across Deltona and Volusia County. Our track record speaks louder than any sales pitch.",
   },
   {
     icon: Users,
@@ -29,12 +29,12 @@ const REASONS = [
   {
     icon: ThumbsUp,
     title: `${COMPANY.rating}★ Google Rated`,
-    description: `${COMPANY.reviewCount}+ verified 5-star reviews from real Central Florida homeowners. We earn our reputation on every single project.`,
+    description: `${COMPANY.reviewCount}+ verified 5-star reviews from real Deltona, DeBary, Orange City, and Volusia County homeowners. We earn our reputation on every project.`,
   },
   {
     icon: Wrench,
     title: "One Call. Total Accountability.",
-    description: "We handle permits, design, materials, construction, inspections, and cleanup. You have one point of contact — us.",
+    description: "We handle permits, design, materials, construction, inspections, and cleanup. You have one local point of contact — us.",
   },
 ]
 
@@ -44,7 +44,7 @@ interface WhyChooseUsProps {
 }
 
 export default function WhyChooseUs({
-  title = "Why Central Florida Homeowners Choose S&S FL Renovations",
+  title = "Why Deltona & Volusia County Homeowners Choose S&S FL Renovations",
   dark = false,
 }: WhyChooseUsProps) {
   return (
@@ -66,7 +66,7 @@ export default function WhyChooseUs({
               {title}
             </h2>
             <p className={`text-base leading-relaxed mb-8 ${dark ? "text-gray-300" : "text-gray-600"}`}>
-              With dozens of contractors to choose from in the Orlando area, we earn your trust through transparency, craftsmanship, and a decade of doing exactly what we say we'll do.
+              With plenty of contractors to choose from in the Deltona and Volusia County area, we earn your trust through transparency, local roots, and a decade of doing exactly what we say we'll do.
             </p>
 
             {/* Review snippet */}
@@ -78,9 +78,9 @@ export default function WhyChooseUs({
                 <span className={`text-xs ml-2 ${dark ? "text-gray-400" : "text-gray-500"}`}>Google Review</span>
               </div>
               <p className={`text-sm italic leading-relaxed ${dark ? "text-gray-300" : "text-gray-700"}`}>
-                "Professional, on time, and the quality is incredible. We've used S&S FL for our kitchen AND our master bath — wouldn't use anyone else."
+                "S&S FL transformed our master bathroom and repainted our entire interior — clean, professional, and done on time. Couldn't ask for a better contractor right here in Deltona."
               </p>
-              <p className={`text-xs mt-2 font-semibold ${dark ? "text-gray-400" : "text-gray-500"}`}>— James & Patricia W., Winter Park, FL</p>
+              <p className={`text-xs mt-2 font-semibold ${dark ? "text-gray-400" : "text-gray-500"}`}>— Linda & Tom H., Deltona, FL</p>
             </div>
 
             <div className="flex flex-wrap gap-3">

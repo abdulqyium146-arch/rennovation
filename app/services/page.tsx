@@ -8,8 +8,8 @@ import CTASection from "@/components/sections/CTASection"
 import WhyChooseUs from "@/components/sections/WhyChooseUs"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Home Renovation Services in Central Florida",
-  description: "Complete home renovation services in Orlando & Central Florida — kitchens, bathrooms, outdoor living, roofing, flooring & more. Licensed, insured. Free estimate.",
+  title: "Home Renovation & Painting Services in Deltona, FL | Volusia County",
+  description: "Complete renovation and painting services in Deltona, FL — cabinet painting, popcorn ceiling removal, kitchen & bathroom renovations, drywall repair & more across Volusia County. Licensed, insured. Free estimate.",
   slug: "services",
 })
 
@@ -23,20 +23,20 @@ export default function ServicesPage() {
         <div className="absolute top-0 left-0 right-0 h-1 gold-gradient" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <span className="text-[#D4922A] font-accent font-semibold text-sm uppercase tracking-wider">
-            Full-Service Renovation
+            Deltona &amp; Volusia County
           </span>
           <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mt-2 mb-5">
-            Home Renovation Services in Central Florida
+            Home Renovation &amp; Painting Services in Deltona, FL
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            From a single bathroom remodel to a complete whole-home transformation — S&S FL Renovations handles every aspect of your renovation project with expert craftsmanship.
+            From cabinet painting and popcorn ceiling removal to full kitchen and bathroom renovations — S&S FL Renovations handles every project across Deltona, DeBary, Orange City, DeLand, and all of Volusia County.
           </p>
         </div>
       </section>
 
       <ServicesGrid
-        title={`All ${SERVICES.length} Renovation Services`}
-        subtitle="Every service delivered by our licensed, insured in-house crew — no subcontractors, no surprises."
+        title={`All ${SERVICES.length} Renovation & Painting Services`}
+        subtitle="Every service delivered by our licensed, insured in-house crew across Deltona and Volusia County — no subcontractors, no surprises."
       />
       <WhyChooseUs />
       <CTASection />

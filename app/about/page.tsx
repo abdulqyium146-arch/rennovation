@@ -9,8 +9,8 @@ import WhyChooseUs from "@/components/sections/WhyChooseUs"
 import { Shield, Award, Users, MapPin } from "lucide-react"
 
 export const metadata: Metadata = buildMetadata({
-  title: "About S&S FL Renovations LLC",
-  description: `Learn about ${COMPANY.name} — Central Florida's trusted home renovation contractor since ${COMPANY.founded}. Licensed, insured, 500+ projects, ${COMPANY.rating}★ rating.`,
+  title: "About S&S FL Renovations LLC — Deltona, FL Renovation & Painting Contractor",
+  description: `Learn about ${COMPANY.name} — Deltona's locally based home renovation and painting contractor since ${COMPANY.founded}. Serving all of Volusia County. Licensed, insured, ${COMPANY.reviewCount}+ five-star reviews.`,
   slug: "about",
 })
 
@@ -31,7 +31,7 @@ export default function AboutPage() {
             About S&S FL Renovations LLC
           </h1>
           <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">
-            For over a decade, we've been transforming Central Florida homes with expert craftsmanship, honest pricing, and a commitment to customer satisfaction that goes beyond the final nail.
+            For over a decade, we've been transforming homes across Deltona, DeBary, Orange City, DeLand, and all of Volusia County — with expert craftsmanship, honest pricing, and a commitment to your satisfaction that goes beyond the final coat of paint.
           </p>
         </div>
       </section>
@@ -49,13 +49,13 @@ export default function AboutPage() {
               </h2>
               <div className="flex flex-col gap-4 text-gray-600 leading-relaxed">
                 <p>
-                  S&S FL Renovations LLC was founded in {COMPANY.founded} with a simple mission: deliver big-city renovation quality with small-company personal service. What started as a small crew serving the Orlando metro has grown into Central Florida's most trusted full-service renovation contractor.
+                  S&S FL Renovations LLC was founded in {COMPANY.founded} with a simple mission: deliver big-city renovation quality with small-company personal service. We are proudly based right here in Deltona, FL — your Volusia County neighbor — and we treat every home we work on like it's our own.
                 </p>
                 <p>
-                  We understand that your home is your biggest investment. Every project — whether it's a bathroom refresh or a complete whole-home transformation — receives the same level of care, precision, and professionalism that has earned us {COMPANY.reviewCount}+ five-star reviews.
+                  We understand that your home is your biggest investment. Every project — whether it's cabinet painting, popcorn ceiling removal, a bathroom remodel, or a complete whole-home renovation — receives the same level of care, precision, and professionalism that has earned us {COMPANY.reviewCount}+ five-star reviews.
                 </p>
                 <p>
-                  Today, our team serves 24 cities across Orange, Seminole, Osceola, Volusia, Lake, Polk, and Brevard counties — bringing expert renovation services right to your doorstep.
+                  Today, our team serves 20+ communities across Volusia County and nearby areas — including DeBary, Orange City, DeLand, Sanford, Lake Helen, Edgewater, Port Orange, and Daytona Beach — bringing expert renovation and painting services right to your doorstep.
                 </p>
               </div>
             </div>
@@ -64,7 +64,7 @@ export default function AboutPage() {
                 { icon: Shield, title: "Licensed & Insured", desc: "Full general liability and workers' comp coverage on every job." },
                 { icon: Award, title: "Award-Winning Quality", desc: "Recognized by the BBB and local homeowner associations." },
                 { icon: Users, title: "In-House Team", desc: "No subcontractors — our dedicated crew handles every project." },
-                { icon: MapPin, title: "Locally Rooted", desc: "We live and work in Central Florida — this community is our home too." },
+                { icon: MapPin, title: "Locally Rooted in Deltona", desc: "We live and work right here in Deltona, FL — your Volusia County neighbor, not a call center." },
               ].map(({ icon: Icon, title, desc }) => (
                 <div key={title} className="bg-[#F7F6F2] rounded-xl p-5 flex flex-col gap-3">
                   <Icon size={24} className="text-[#D4922A]" />

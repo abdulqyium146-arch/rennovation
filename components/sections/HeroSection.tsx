@@ -70,7 +70,7 @@ export default function HeroSection({
   return (
     <section
       className="relative min-h-[92vh] lg:min-h-screen flex items-center overflow-hidden"
-      aria-label="Central Florida Renovations — Home Renovation Contractor Orlando FL"
+      aria-label="S&S FL Renovations — Renovation & Painting Contractor Deltona FL"
       itemScope
       itemType="https://schema.org/LocalBusiness"
     >
@@ -219,7 +219,7 @@ export default function HeroSection({
                 {!cardPlaying && (
                   <Image
                     src={imgInterior}
-                    alt="Home renovation completed by Central Florida Renovations — interior living room Orlando FL"
+                    alt="Home renovation completed by S&S FL Renovations — interior renovation and painting Deltona FL"
                     fill
                     priority
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -239,8 +239,8 @@ export default function HeroSection({
                   preload="metadata"
                   poster={HERO_POSTER}
                   onEnded={() => setCardPlaying(false)}
-                  title="Central Florida home renovation work — Orlando FL"
-                  aria-label="Video showing Central Florida Renovations contractors at work in Orlando FL"
+                  title="Deltona FL home renovation and painting — S&S FL Renovations"
+                  aria-label="Video showing S&S FL Renovations contractors at work in Deltona FL — renovation and painting across Volusia County"
                   itemProp="contentUrl"
                 >
                   <source src={HERO_VIDEO} type="video/mp4" />
@@ -282,10 +282,10 @@ export default function HeroSection({
                     ✓ Real Project
                   </span>
                   <p className="text-white font-semibold text-sm leading-tight">
-                    Central Florida Renovation — See Our Work
+                    Deltona, FL Renovation & Painting — See Our Work
                   </p>
                   <p className="text-[#D4922A] text-xs">
-                    Orlando, FL · Central Florida Renovations
+                    Deltona, FL · S&S FL Renovations LLC
                   </p>
                 </div>
               </div>
@@ -310,10 +310,9 @@ export default function HeroSection({
                 </div>
               </div>
               <blockquote className="text-gray-700 text-sm leading-relaxed italic border-l-2 border-[#D4922A] pl-3">
-                "S&S FL completely transformed our kitchen. Finished early, stayed on budget,
-                quality is stunning. Best contractor in Central Florida."
+                "They repainted our whole house and refinished the kitchen cabinets — stunning results. Locally based in Deltona and it shows. They genuinely care about this community."
               </blockquote>
-              <p className="text-xs text-gray-400 mt-2">— Maria R., Orlando, FL</p>
+              <p className="text-xs text-gray-400 mt-2">— Maria R., Deltona, FL</p>
             </div>
 
             {/* Stats — desktop only */}
@@ -321,7 +320,7 @@ export default function HeroSection({
               {[
                 { value: "500+", label: "Projects Done" },
                 { value: "10+",  label: "Yrs Experience" },
-                { value: "24",   label: "Cities Served" },
+                { value: "20+",  label: "Cities Served" },
               ].map(({ value, label }) => (
                 <div key={label} className="bg-white/10 backdrop-blur border border-white/15 rounded-xl p-3 text-center">
                   <p className="font-accent text-xl font-bold text-[#D4922A]">{value}</p>

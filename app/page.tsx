@@ -22,37 +22,37 @@ import BlogPreview from "@/components/sections/BlogPreview"
 import CTASection from "@/components/sections/CTASection"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Home Renovation Contractor Orlando & Central Florida",
-  description: `Central Florida Renovations — Orlando's #1 home renovation contractor. Kitchen remodeling, bathroom renovation, room additions & outdoor living. Licensed, insured, 500+ projects. Free estimate: ${COMPANY.phone}.`,
+  title: "Home Renovation & Painting Contractor Deltona, FL | Volusia County",
+  description: `S&S FL Renovations LLC — Deltona's trusted renovation and house painting contractor. Cabinet painting, popcorn ceiling removal, kitchen & bathroom renovations across Volusia County. Free estimates: ${COMPANY.phone}.`,
   slug: "",
   keywords: [
-    "central florida renovations",
-    "home renovation Orlando FL",
-    "home remodeling Central Florida",
-    "kitchen remodeling Orlando",
-    "bathroom renovation Orlando",
-    "renovation contractor Central Florida",
-    "licensed contractor Orlando",
+    "home renovation Deltona FL",
+    "house painting Deltona FL",
+    "renovation contractor Volusia County",
+    "cabinet painting Deltona FL",
+    "popcorn ceiling removal Deltona",
+    "painting contractor DeBary FL",
+    "renovation contractor near me Deltona",
   ],
 })
 
 const heroVideoSchema = {
   "@context": "https://schema.org",
   "@type": "VideoObject",
-  name: "Central Florida Home Renovation — Contractors at Work in Orlando FL | Central Florida Renovations",
+  name: "Deltona FL Home Renovation & Painting — S&S FL Renovations LLC | Volusia County Contractor",
   description:
-    "Watch Central Florida Renovations' licensed contractors performing real home renovation work in Orlando, FL — bathroom remodels, drywall, exterior paint, interior renovations and more.",
+    "Watch S&S FL Renovations LLC's licensed contractors performing real home renovation and painting work in Deltona, FL — cabinet painting, popcorn ceiling removal, bathroom remodels, exterior painting and more across Volusia County.",
   contentUrl: `${COMPANY.domain}/videos/central-florida-home-renovation-hero-orlando-fl.mp4`,
   thumbnailUrl: `${COMPANY.domain}/gallery/home-renovation-interior-central-florida.webp`,
   uploadDate: "2026-03-27T00:00:00.000Z",
   duration: "PT1M",
   embedUrl: COMPANY.domain,
   keywords:
-    "home renovation Orlando FL, central florida renovations, bathroom remodel Orlando, kitchen renovation Central Florida, licensed contractor Orlando",
+    "home renovation Deltona FL, house painting Deltona FL, cabinet painting Volusia County, popcorn ceiling removal Deltona, renovation contractor DeBary FL",
   inLanguage: "en-US",
   publisher: {
     "@type": "Organization",
-    name: "Central Florida Renovations",
+    name: "S&S FL Renovations LLC",
     url: COMPANY.domain,
     logo: {
       "@type": "ImageObject",
@@ -74,8 +74,8 @@ export default function HomePage() {
 
       {/* ── SECTION 1: Hero — full viewport, geo-targeted H1, inline social proof ── */}
       <HeroSection
-        heading="Orlando's #1 Home Renovation Contractor"
-        subheading={`Expert kitchen, bathroom, outdoor & full-home renovations across Orlando, Kissimmee, Winter Park, Sanford and all of Central Florida. Licensed, insured, and trusted by ${COMPANY.projectCount}+ homeowners since ${COMPANY.founded}.`}
+        heading="Deltona's Trusted Renovation & Painting Contractor"
+        subheading={`Expert house painting, kitchen renovations, bathroom remodels, and more across Deltona, DeBary, Orange City, DeLand, and all of Volusia County. Licensed, insured, and trusted by ${COMPANY.projectCount}+ homeowners since ${COMPANY.founded}.`}
       />
 
       {/* ── SECTION 2: Social proof bar — immediately below hero fold ── */}
@@ -83,8 +83,8 @@ export default function HomePage() {
 
       {/* ── SECTION 3: Services grid — what we offer, with sub-service previews ── */}
       <ServicesGrid
-        title="Home Renovation Services in Central Florida"
-        subtitle={`${COMPANY.projectCount}+ completed renovations. From a single bathroom refresh to a complete whole-home transformation — all performed by our licensed in-house crew.`}
+        title="Renovation & Painting Services in Deltona, FL"
+        subtitle={`${COMPANY.projectCount}+ completed projects across Volusia County. From cabinet painting and popcorn ceiling removal to full kitchen and bathroom renovations — all performed by our licensed in-house crew.`}
       />
 
       {/* ── SECTION 4: Why us — split layout with inline review + two CTAs ── */}
@@ -110,7 +110,7 @@ export default function HomePage() {
 
       {/* ── SECTION 11: FAQ — two-column, schema-marked ── */}
       <FAQAccordion
-        title="Home Renovation Questions — Answered"
+        title="Renovation & Painting Questions — Answered for Deltona Homeowners"
         twoColumn
       />
 
@@ -119,8 +119,8 @@ export default function HomePage() {
 
       {/* ── SECTION 13: Final CTA — urgency + financing reminder ── */}
       <CTASection
-        title="Ready to Start Your Renovation?"
-        subtitle={`Join ${COMPANY.projectCount}+ happy Central Florida homeowners. Free estimates — respond within 24 hours. Financing available.`}
+        title="Ready to Transform Your Deltona Home?"
+        subtitle={`Join ${COMPANY.projectCount}+ happy Volusia County homeowners. Free estimates anywhere in the Deltona area — we respond within 24 hours. Financing available.`}
         showFinancing
       />
     </>
