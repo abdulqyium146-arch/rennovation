@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { SERVICES, COMPANY } from "@/lib/constants"
 import { buildServiceMetadata } from "@/lib/seo"
-import { buildServiceSchema } from "@/lib/schema"
+import { buildServiceSchema, safeJsonLd } from "@/lib/schema"
 import BreadcrumbNav from "@/components/global/BreadcrumbNav"
 import TrustBar from "@/components/global/TrustBar"
 import CTASection from "@/components/sections/CTASection"
@@ -13,6 +13,8 @@ import { CheckCircle, Phone, ArrowRight } from "lucide-react"
 interface Props {
   params: Promise<{ category: string; service: string }>
 }
+
+export const revalidate = 86400
 
 export async function generateStaticParams() {
   return SERVICES.flatMap((svc) =>
@@ -47,7 +49,7 @@ export default async function SubServicePage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(serviceSchema) }}
       />
       <TrustBar />
       <BreadcrumbNav
@@ -64,13 +66,13 @@ export default async function SubServicePage({ params }: Props) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="text-[#D4922A] font-accent font-semibold text-sm uppercase tracking-wider">
-              {parent.name} · Central Florida
+              {parent.name} · Deltona &amp; Volusia County
             </span>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mt-2 mb-5">
-              {sub.name} in Orlando & Central Florida
+              {sub.name} in Deltona, FL &amp; Volusia County
             </h1>
             <p className="text-gray-300 text-lg mb-8">
-              Professional {sub.name.toLowerCase()} services by S&S FL Renovations LLC. Licensed, insured, and serving all of Central Florida with 10+ years of experience.
+              Professional {sub.name.toLowerCase()} services by S&S FL Renovations LLC — locally based in Deltona, FL. Licensed, insured, and serving Volusia County and surrounding areas with 10+ years of experience.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -95,17 +97,17 @@ export default async function SubServicePage({ params }: Props) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <h2 className="font-display text-3xl font-bold text-[#1B2B4B] mb-5">
-              Expert {sub.name} in Central Florida
+              Expert {sub.name} in Deltona &amp; Volusia County
             </h2>
             <div className="text-gray-600 leading-relaxed space-y-4">
               <p>
-                S&S FL Renovations LLC provides professional {sub.name.toLowerCase()} services throughout Orlando and all of Central Florida. Our licensed and insured crew brings expert craftsmanship to every project, no matter the size.
+                S&S FL Renovations LLC provides professional {sub.name.toLowerCase()} services throughout Deltona, DeBary, Orange City, DeLand, Sanford, and all of Volusia County. Our licensed and insured crew brings expert craftsmanship to every project, no matter the size.
               </p>
               <p>
                 Whether you're upgrading your home for comfort, resale value, or Florida's unique climate demands, our team delivers results you'll love — on time and on budget.
               </p>
               <p>
-                We serve Orange, Seminole, Osceola, Volusia, Lake, Polk, and Brevard counties. Get your free estimate today.
+                Locally based at 1757 S Village Dr, Deltona, FL — we're your Volusia County neighbor. Get your free estimate today.
               </p>
             </div>
           </div>
@@ -163,7 +165,7 @@ export default async function SubServicePage({ params }: Props) {
       <FAQAccordion title={`${sub.name} — FAQ`} />
       <CTASection
         title={`Ready to Start Your ${sub.name} Project?`}
-        subtitle="Get your free, no-obligation estimate from Central Florida's most trusted renovation team."
+        subtitle="Get your free, no-obligation estimate from Deltona and Volusia County's most trusted renovation and painting team."
       />
     </>
   )

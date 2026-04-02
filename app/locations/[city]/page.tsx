@@ -15,6 +15,8 @@ interface Props {
   params: Promise<{ city: string }>
 }
 
+export const revalidate = 86400
+
 export async function generateStaticParams() {
   return CITIES.map((c) => ({ city: c.slug }))
 }
@@ -32,35 +34,46 @@ const CITY_CONTENT: Record<string, {
   highlights: string[]
   landmarks: string[]
 }> = {
-  orlando: {
-    intro: `Orlando is Central Florida's largest city and home to a thriving residential renovation market. From the established neighborhoods of College Park and Baldwin Park to newer developments in Lake Nona and Dr. Phillips, S&S FL Renovations LLC has been transforming Orlando homes since ${COMPANY.founded}. Whether you're upgrading a vintage bungalow near Thornton Park or modernizing a new build in Horizon West, our licensed crew delivers exceptional results tailored to Orlando's climate and architecture.`,
-    highlights: ["Kitchen & bathroom remodels in all Orlando neighborhoods", "Hurricane protection upgrades for Florida's storm season", "Outdoor living spaces perfect for Orlando's year-round sunshine"],
-    landmarks: ["College Park", "Baldwin Park", "Lake Nona", "Dr. Phillips", "Windermere-adjacent"],
+  deltona: {
+    intro: `Deltona is home base for S&S FL Renovations LLC — we're located right here at 1757 S Village Dr, Deltona, FL 32725. As Volusia County's largest city, Deltona has a diverse mix of established neighborhoods, HOA communities, and older homes that are prime candidates for renovation and painting upgrades. From cabinet painting in Spring-to-Spring Trail area homes to popcorn ceiling removal across Deltona Lakes, our crew knows this community intimately and treats every project like it's our own home.`,
+    highlights: ["Locally based in Deltona — faster response than any other contractor", "HOA-compliant exterior painting and renovation work", "Specialists in popcorn ceiling removal for Deltona's older homes"],
+    landmarks: ["Deltona Lakes", "Deltona Hills", "Spring-to-Spring Trail corridor", "Saxon Boulevard area"],
   },
-  kissimmee: {
-    intro: `Kissimmee, located in Osceola County just south of Orlando, is one of Central Florida's fastest-growing residential markets. Home to a diverse community of long-term residents and new arrivals, Kissimmee homeowners are increasingly investing in renovations to build equity and improve quality of life. S&S FL Renovations LLC has completed dozens of projects in Kissimmee, from kitchen overhauls in established neighborhoods near Downtown Kissimmee to bathroom renovations and screen enclosure installations throughout the Lake Toho corridor.`,
-    highlights: ["Close proximity to Orlando — faster response times", "Experience with Kissimmee's humidity-challenged homes", "Bilingual team for Spanish-speaking homeowners"],
-    landmarks: ["Downtown Kissimmee", "Lake Tohopekaliga area", "Celebration-adjacent communities", "Osceola Parkway corridor"],
+  debary: {
+    intro: `DeBary, FL is one of Volusia County's most desirable communities — just minutes from our Deltona headquarters. Known for its riverfront neighborhoods, St. Johns River access, and well-maintained subdivisions, DeBary homeowners invest in renovations that reflect the community's character. S&S FL Renovations LLC has completed cabinet painting, bathroom remodels, screen enclosure installations, and exterior painting projects throughout DeBary, delivering results that stand up to Florida's demanding climate.`,
+    highlights: ["Just minutes from our Deltona base — fast scheduling", "Cabinet painting and kitchen upgrades for DeBary homes", "Exterior painting built for DeBary's riverfront humidity"],
+    landmarks: ["DeBary Hall Historic Site area", "Gemini Springs corridor", "River Edge community", "St. Johns River waterfront neighborhoods"],
   },
-  "winter-park": {
-    intro: `Winter Park is renowned as one of Orlando's most prestigious neighborhoods, featuring historic brick-lined streets, Park Avenue boutiques, and beautifully maintained homes that range from craftsman bungalows to custom estates. Homeowners in Winter Park expect renovation quality to match their property values — and that's exactly what S&S FL Renovations LLC delivers. We've completed luxury kitchen renovations, master bath transformations, and whole-home remodels throughout Winter Park's most desirable streets and lakefront communities.`,
-    highlights: ["Experience with high-end luxury renovations", "Familiar with Winter Park's historic home requirements", "Premium material sourcing for upscale finishes"],
-    landmarks: ["Park Avenue corridor", "Winter Park lakefront homes", "Hannibal Square", "Rollins College area"],
+  "orange-city": {
+    intro: `Orange City, FL is a charming Volusia County community just north of DeLand and minutes from our Deltona headquarters. Orange City's established neighborhoods feature many homes built in the 1980s–2000s that are ideal for popcorn ceiling removal, interior painting, and bathroom upgrades. S&S FL Renovations LLC proudly serves Orange City homeowners with the same craftsmanship and transparent pricing that has earned us 127+ five-star reviews across Volusia County.`,
+    highlights: ["Popcorn ceiling removal specialists for Orange City's older homes", "Interior and exterior painting across all Orange City neighborhoods", "Free estimates within 48 hours for all Orange City homeowners"],
+    landmarks: ["Blue Spring State Park adjacent neighborhoods", "Orange City downtown area", "Volusia County Fairgrounds corridor"],
   },
-  "lake-mary": {
-    intro: `Lake Mary is one of Seminole County's premier suburban communities, featuring upscale residential neighborhoods, top-rated schools, and a professional demographic that values quality home upgrades. S&S FL Renovations LLC is a trusted renovation partner for Lake Mary homeowners, delivering kitchen transformations, outdoor living spaces, and whole-home renovations throughout this vibrant community.`,
-    highlights: ["Serving Lake Mary's established neighborhoods", "Outdoor living expertise for Florida lifestyles", "Competitive pricing for Seminole County homeowners"],
-    landmarks: ["Lake Mary Boulevard corridor", "Heathrow community", "Colonial TownPark area"],
+  deland: {
+    intro: `DeLand, FL — the county seat of Volusia County — is a historic city with a vibrant downtown, Stetson University, and beautiful residential neighborhoods ranging from Victorian-era homes to modern subdivisions. S&S FL Renovations LLC serves DeLand homeowners with expert renovation and painting services, including cabinet painting, drywall repair, interior repaints, and outdoor renovations. We're just 15 minutes away in Deltona and offer free in-home estimates with no pressure.`,
+    highlights: ["Cabinet painting and kitchen renovations for DeLand historic homes", "Full interior and exterior painting — Volusia County licensed", "Free estimates and flexible scheduling for DeLand homeowners"],
+    landmarks: ["Stetson University neighborhood", "DeLand historic downtown area", "Athens Theatre corridor", "Volusia County Government Center area"],
+  },
+  sanford: {
+    intro: `Sanford, FL — the seat of Seminole County — sits just across the Volusia County line and is well within our 25-mile service radius from Deltona. Sanford's historic downtown, Lake Monroe waterfront, and growing residential developments make it a prime market for renovation and painting services. S&S FL Renovations LLC brings the same quality and transparency to Sanford homeowners that we're known for across Volusia County — with no extra travel fees.`,
+    highlights: ["Serving all Sanford neighborhoods — no travel surcharge", "Kitchen remodeling and bathroom renovations for Sanford homes", "Fence & deck staining for Sanford's outdoor living spaces"],
+    landmarks: ["Historic Sanford downtown", "Lake Monroe waterfront", "Celery City Historic District", "Rinehart Road corridor"],
+  },
+  "lake-helen": {
+    intro: `Lake Helen, FL is one of Volusia County's most picturesque small towns — with tree-lined streets, historic homes, and a close-knit community that takes pride in their properties. S&S FL Renovations LLC is proud to serve Lake Helen homeowners, offering renovation and painting services with almost zero local competition. Whether you need interior painting, cabinet refinishing, or popcorn ceiling removal in your historic Lake Helen home, our Deltona-based crew is just a short drive away.`,
+    highlights: ["Almost zero renovation competition in Lake Helen — easier scheduling", "Historic home renovation specialists for Lake Helen's older properties", "Free estimates for all Lake Helen homeowners"],
+    landmarks: ["Lake Helen historic district", "Spirit Lake area", "Volusia County small-town communities"],
   },
 }
 
+
 function getDefaultCityContent(cityName: string, county: string) {
   return {
-    intro: `${cityName}, FL is a thriving ${county} County community where homeowners consistently invest in renovation upgrades to build equity and enjoy Florida's premium lifestyle. S&S FL Renovations LLC proudly serves ${cityName} with the same expert craftsmanship and transparent pricing that has earned us ${COMPANY.rating}★ across all of Central Florida. Whether you're planning a kitchen remodel, bathroom renovation, outdoor living upgrade, or whole-home transformation, our licensed crew is ready to bring your vision to life in ${cityName}.`,
+    intro: `${cityName}, FL is a ${county} County community within our service area from our Deltona, FL headquarters. S&S FL Renovations LLC proudly serves ${cityName} homeowners with the same expert craftsmanship and transparent pricing that has earned us ${COMPANY.rating}★ and 127+ five-star reviews across Volusia County and surrounding areas. Whether you're planning a cabinet painting project, popcorn ceiling removal, bathroom renovation, or full home transformation, our locally based crew is just minutes away.`,
     highlights: [
-      `Full-service renovation in ${cityName} and nearby cities`,
-      "Licensed & insured — compliant with local codes",
-      "Free in-home consultation within 48 hours",
+      `Full-service renovation and painting in ${cityName} — no travel surcharge`,
+      "Licensed & insured — compliant with Florida and local codes",
+      "Free in-home consultation within 48 hours of your inquiry",
     ],
     landmarks: [`${cityName} neighborhoods`, `${county} County communities`],
   }
@@ -82,19 +95,23 @@ export default async function CityPage({ params }: Props) {
   const cityFaqs = [
     {
       question: `How much does a home renovation cost in ${city.name}, FL?`,
-      answer: `Renovation costs in ${city.name} vary widely. A bathroom remodel typically runs $8,000–$35,000, kitchen remodels $15,000–$80,000+, and room additions $40,000–$120,000+. Contact us for a free, itemized estimate specific to your project.`,
+      answer: `Renovation costs in ${city.name} vary by project. Cabinet painting typically runs $1,500–$5,000, interior painting $2,500–$6,000, a bathroom remodel $8,000–$35,000, and kitchen renovations $15,000–$80,000+. Contact us for a free, itemized estimate with no pressure.`,
     },
     {
-      question: `Do you serve all of ${city.name}?`,
-      answer: `Yes! We serve all neighborhoods throughout ${city.name} and ${city.county} County. Our crew travels throughout Central Florida with no additional travel fees within our service area.`,
+      question: `Do you offer free estimates in ${city.name}?`,
+      answer: `Yes — always. We're based just minutes away in Deltona, FL and offer free in-home estimates to all ${city.name} homeowners. We typically schedule within 48 hours of your inquiry and provide a detailed written quote with no hidden fees.`,
     },
     {
       question: `Are you licensed to work in ${city.name}?`,
-      answer: `Absolutely. We hold a valid Florida State Contractor License (${COMPANY.licenseNumber}) and carry full insurance. We pull all necessary permits through ${city.county} County for every project.`,
+      answer: `Absolutely. We hold a valid Florida State Contractor License (${COMPANY.licenseNumber}) and carry full general liability insurance and workers' compensation. We pull all necessary permits through ${city.county} County for every project.`,
     },
     {
       question: `How quickly can you start my project in ${city.name}?`,
-      answer: `Most projects begin within 2–4 weeks of signing the contract. We schedule a free in-home consultation within 48 hours of your inquiry.`,
+      answer: `Most projects begin within 2–4 weeks of signing the contract. We're locally based in Deltona — just minutes from ${city.name} — so scheduling is fast and flexible.`,
+    },
+    {
+      question: `What other areas near ${city.name} do you serve?`,
+      answer: `We serve all of Volusia County — including Deltona, DeBary, Orange City, DeLand, Lake Helen, Edgewater, Port Orange, New Smyrna Beach, and Daytona Beach — as well as nearby Seminole and Orange County communities within about 25 miles of our Deltona headquarters.`,
     },
   ]
 

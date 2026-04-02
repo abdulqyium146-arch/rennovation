@@ -1,29 +1,41 @@
 import { COMPANY, CITIES } from "./constants"
 
+/** Escape `<` to prevent XSS in inline JSON-LD script tags (per Next.js docs). */
+export function safeJsonLd(obj: unknown): string {
+  return JSON.stringify(obj).replace(/</g, "\\u003c")
+}
+
 export function buildLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     name: COMPANY.name,
-    alternateName: "Central Florida Renovations",
+    alternateName: "S&S FL Renovations",
     telephone: COMPANY.phone,
     email: COMPANY.email,
     url: COMPANY.domain,
     logo: `${COMPANY.domain}/images/logo.webp`,
-    image: `${COMPANY.domain}/images/og-home.jpg`,
+    image: `${COMPANY.domain}/og/default.jpg`,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Orlando",
+      streetAddress: "1757 S Village Dr",
+      addressLocality: "Deltona",
       addressRegion: "FL",
+      postalCode: "32725",
       addressCountry: "US",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 28.9005,
+      longitude: -81.2637,
     },
     areaServed: CITIES.map((c) => ({
       "@type": "City",
       name: c.name,
       containedInPlace: { "@type": "State", name: "Florida" },
     })),
-    priceRange: "$$-$$$",
-    openingHours: "Mo Tu We Th Fr Sa Su 00:00-23:59",
+    priceRange: "$$",
+    openingHours: "Mo-Su 00:00-23:59",
     foundingDate: String(COMPANY.founded),
     aggregateRating: {
       "@type": "AggregateRating",
@@ -36,6 +48,7 @@ export function buildLocalBusinessSchema() {
       "@type": "EducationalOccupationalCredential",
       name: `Florida Contractor License ${COMPANY.licenseNumber}`,
     },
+    sameAs: [COMPANY.domain],
   }
 }
 
@@ -43,8 +56,7 @@ export function buildWebsiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Central Florida Renovations",
-    alternateName: COMPANY.name,
+    name: COMPANY.name,
     url: COMPANY.domain,
     potentialAction: {
       "@type": "SearchAction",
@@ -78,20 +90,29 @@ export function buildServiceSchema({
       name: COMPANY.name,
       telephone: COMPANY.phone,
       url: COMPANY.domain,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "1757 S Village Dr",
+        addressLocality: "Deltona",
+        addressRegion: "FL",
+        postalCode: "32725",
+        addressCountry: "US",
+      },
     },
-    areaServed: {
-      "@type": "State",
-      name: "Florida",
-    },
+    areaServed: [
+      { "@type": "City", name: "Deltona", containedInPlace: { "@type": "AdministrativeArea", name: "Volusia County" } },
+      { "@type": "City", name: "DeBary", containedInPlace: { "@type": "AdministrativeArea", name: "Volusia County" } },
+      { "@type": "City", name: "Orange City", containedInPlace: { "@type": "AdministrativeArea", name: "Volusia County" } },
+      { "@type": "City", name: "DeLand", containedInPlace: { "@type": "AdministrativeArea", name: "Volusia County" } },
+      { "@type": "AdministrativeArea", name: "Volusia County" },
+    ],
     serviceType: name,
     url: `${COMPANY.domain}/services/${slug}`,
     image: image ?? `${COMPANY.domain}/og/services-${slug}.jpg`,
   }
 }
 
-export function buildBreadcrumbSchema(
-  items: { name: string; href: string }[]
-) {
+export function buildBreadcrumbSchema(items: { name: string; href: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -159,12 +180,9 @@ export function buildArticleSchema({
   }
 }
 
-export function buildReviewSchema(reviews: {
-  author: string
-  rating: number
-  text: string
-  date: string
-}[]) {
+export function buildReviewSchema(
+  reviews: { author: string; rating: number; text: string; date: string }[]
+) {
   return {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
@@ -185,5 +203,44 @@ export function buildReviewSchema(reviews: {
       reviewBody: r.text,
       datePublished: r.date,
     })),
+  }
+}
+
+export function buildCityServiceSchema({
+  serviceName,
+  cityName,
+  citySlug,
+  serviceSlug,
+}: {
+  serviceName: string
+  cityName: string
+  citySlug: string
+  serviceSlug: string
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `${serviceName} in ${cityName}, FL`,
+    provider: {
+      "@type": "HomeAndConstructionBusiness",
+      name: COMPANY.name,
+      url: COMPANY.domain,
+      telephone: COMPANY.phone,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "1757 S Village Dr",
+        addressLocality: "Deltona",
+        addressRegion: "FL",
+        postalCode: "32725",
+        addressCountry: "US",
+      },
+    },
+    areaServed: {
+      "@type": "City",
+      name: cityName,
+      containedInPlace: { "@type": "State", name: "Florida" },
+    },
+    url: `${COMPANY.domain}/locations/${citySlug}`,
+    serviceType: serviceName,
   }
 }

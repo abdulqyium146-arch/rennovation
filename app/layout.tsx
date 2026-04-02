@@ -3,7 +3,7 @@ import { Playfair_Display, DM_Sans, Oswald } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/global/Header"
 import Footer from "@/components/global/Footer"
-import { buildLocalBusinessSchema, buildWebsiteSchema } from "@/lib/schema"
+import { buildLocalBusinessSchema, buildWebsiteSchema, safeJsonLd } from "@/lib/schema"
 import { COMPANY } from "@/lib/constants"
 
 const playfair = Playfair_Display({
@@ -35,31 +35,38 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Central Florida Renovations | Home Remodeling Contractor Orlando FL",
-    template: "%s | Central Florida Renovations",
+    default: "S&S FL Renovations LLC | Renovation & Painting Contractor Deltona, FL",
+    template: "%s | S&S FL Renovations LLC",
   },
   description:
-    "Central Florida Renovations — Orlando's top-rated home renovation contractor. Kitchen remodeling, bathroom renovation, room additions, outdoor living & full-home remodels. Licensed, insured, 500+ projects completed. Free estimate: (213) 841-6924.",
+    "S&S FL Renovations LLC — Deltona's trusted home renovation and house painting contractor. Cabinet painting, popcorn ceiling removal, kitchen & bathroom renovations across Volusia County. Licensed, insured, 500+ projects. Free estimate: (213) 841-6924.",
   metadataBase: new URL(COMPANY.domain),
+  alternates: {
+    canonical: COMPANY.domain,
+  },
   keywords: [
-    "central florida renovations",
-    "home renovation Central Florida",
-    "home remodeling Orlando FL",
-    "kitchen remodeling Orlando",
-    "bathroom renovation Orlando",
-    "room additions Central Florida",
-    "home renovation contractor Florida",
-    "licensed renovation contractor Orlando",
+    "home renovation Deltona FL",
+    "house painting Deltona FL",
+    "renovation contractor Volusia County",
+    "cabinet painting Deltona FL",
+    "popcorn ceiling removal Deltona",
+    "painting contractor DeBary FL",
+    "renovation contractor near me Deltona",
   ].join(", "),
   openGraph: {
-    siteName: "Central Florida Renovations",
+    siteName: "S&S FL Renovations LLC",
     locale: "en_US",
     type: "website",
+    images: [{ url: `${COMPANY.domain}/og/default.jpg`, width: 1200, height: 630, alt: "S&S FL Renovations LLC — Deltona, FL" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@ssflorenovations",
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
   manifest: "/site.webmanifest",
 }
@@ -68,13 +75,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable} ${oswald.variable}`}>
       <head>
+        {/* Structured data — LocalBusiness + WebSite */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildLocalBusinessSchema()) }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(buildLocalBusinessSchema()) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildWebsiteSchema()) }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(buildWebsiteSchema()) }}
         />
         {/* Google Tag Manager — replace GTM-XXXXXX with your container ID */}
         <script

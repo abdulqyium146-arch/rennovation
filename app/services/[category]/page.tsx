@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { SERVICES, COMPANY, FAQ_GENERAL } from "@/lib/constants"
-import { buildServiceSchema, buildBreadcrumbSchema } from "@/lib/schema"
+import { buildServiceSchema, buildBreadcrumbSchema, safeJsonLd } from "@/lib/schema"
 import { buildServiceMetadata } from "@/lib/seo"
 import BreadcrumbNav from "@/components/global/BreadcrumbNav"
 import TrustBar from "@/components/global/TrustBar"
@@ -14,6 +14,8 @@ import { CheckCircle, Phone, ArrowRight, Star } from "lucide-react"
 interface Props {
   params: Promise<{ category: string }>
 }
+
+export const revalidate = 86400 // 24-hour ISR
 
 export async function generateStaticParams() {
   return SERVICES.map((s) => ({ category: s.slug }))
@@ -136,7 +138,7 @@ const SERVICE_CONTENT: Record<string, {
 // Fallback content generator for services without custom content
 function getDefaultContent(serviceName: string) {
   return {
-    intro: `S&S FL Renovations LLC provides professional ${serviceName.toLowerCase()} services throughout Orlando and all of Central Florida. Our licensed, insured team has completed 500+ renovation projects and brings expert craftsmanship to every job — from initial design to final walkthrough. We serve Orange, Seminole, Osceola, Volusia, Lake, Polk, and Brevard counties.`,
+    intro: `S&S FL Renovations LLC provides professional ${serviceName.toLowerCase()} services throughout Deltona, DeBary, Orange City, DeLand, and all of Volusia County. Our licensed, insured team has completed 500+ renovation and painting projects — bringing expert craftsmanship to every job, from initial design to final walkthrough.`,
     included: [
       `Professional ${serviceName.toLowerCase()} design & planning`,
       "Licensed and insured installation",
@@ -178,7 +180,7 @@ export default async function ServiceCategoryPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(serviceSchema) }}
       />
       <TrustBar />
       <BreadcrumbNav
@@ -194,13 +196,13 @@ export default async function ServiceCategoryPage({ params }: Props) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="text-[#D4922A] font-accent font-semibold text-sm uppercase tracking-wider">
-              Central Florida
+              Deltona &amp; Volusia County, FL
             </span>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mt-2 mb-5 leading-tight">
-              {service.name} in Orlando & Central Florida
+              {service.name} in Deltona, FL &amp; Volusia County
             </h1>
             <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-              {service.description} Serving all of Central Florida with expert craftsmanship, licensed crews, and transparent pricing.
+              {service.description} Locally based in Deltona — serving DeBary, Orange City, DeLand, Sanford, and all of Volusia County with licensed crews and transparent pricing.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -225,7 +227,7 @@ export default async function ServiceCategoryPage({ params }: Props) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <h2 className="font-display text-3xl font-bold text-[#1B2B4B] mb-5">
-              Expert {service.name} in Central Florida
+              Expert {service.name} in Deltona &amp; Volusia County
             </h2>
             <p className="text-gray-600 leading-relaxed text-base">{content.intro}</p>
 
@@ -290,7 +292,7 @@ export default async function ServiceCategoryPage({ params }: Props) {
             {service.name} Cost Guide
           </h2>
           <p className="text-gray-600 text-center mb-10 max-w-xl mx-auto">
-            Prices vary based on scope, materials, and home size. These ranges represent typical Central Florida projects.
+            Prices vary based on scope, materials, and home size. These ranges represent typical Deltona and Volusia County projects.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {content.pricing.map(({ label, range }) => (
@@ -351,8 +353,8 @@ export default async function ServiceCategoryPage({ params }: Props) {
       </section>
 
       <CTASection
-        title={`Start Your ${service.name} Project`}
-        subtitle="Get a free, detailed estimate for your Central Florida home renovation project."
+        title={`Start Your ${service.name} Project in Deltona or Nearby`}
+        subtitle="Get a free, detailed estimate for your Volusia County home renovation project — we respond within 24 hours."
       />
     </>
   )

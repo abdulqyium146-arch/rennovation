@@ -2,12 +2,15 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { COMPANY } from "@/lib/constants"
-import { buildArticleSchema } from "@/lib/schema"
+import { buildArticleSchema, safeJsonLd } from "@/lib/schema"
+import { buildBlogMetadata } from "@/lib/seo"
 import BreadcrumbNav from "@/components/global/BreadcrumbNav"
 import TrustBar from "@/components/global/TrustBar"
 import CTASection from "@/components/sections/CTASection"
 import { BLOG_POSTS } from "../page"
 import { Calendar, Clock, ArrowRight } from "lucide-react"
+
+export const revalidate = 86400
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -21,19 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const post = BLOG_POSTS.find((p) => p.slug === slug)
   if (!post) return {}
-
-  return {
-    title: `${post.title} | ${COMPANY.name}`,
-    description: post.excerpt,
-    alternates: { canonical: `${COMPANY.domain}/blog/${slug}` },
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: "article",
-      publishedTime: post.date,
-      url: `${COMPANY.domain}/blog/${slug}`,
-    },
-  }
+  return buildBlogMetadata({ title: post.title, excerpt: post.excerpt, slug, date: post.date })
 }
 
 // Blog post content map — add full content per post
@@ -231,7 +222,7 @@ export default async function BlogPostPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(articleSchema) }}
       />
       <TrustBar />
       <BreadcrumbNav
