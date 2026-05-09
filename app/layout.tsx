@@ -3,7 +3,8 @@ import { Playfair_Display, DM_Sans, Oswald } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/global/Header"
 import Footer from "@/components/global/Footer"
-import { buildLocalBusinessSchema, buildWebsiteSchema, safeJsonLd } from "@/lib/schema"
+import { localBusinessSchema, websiteSchema } from "@/lib/schemas"
+import { SchemaMarkup } from "@/components/global/SchemaMarkup"
 import { COMPANY } from "@/lib/constants"
 
 const playfair = Playfair_Display({
@@ -75,15 +76,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable} ${oswald.variable}`}>
       <head>
-        {/* Structured data — LocalBusiness + WebSite */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: safeJsonLd(buildLocalBusinessSchema()) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: safeJsonLd(buildWebsiteSchema()) }}
-        />
+        {/* Global structured data — present on every page.
+            LocalBusiness: the primary entity for local search ranking signals.
+            WebSite: enables the sitelinks searchbox in Google Search.
+            Page-specific schemas (Service, HowTo, FAQPage, etc.) are added per-route. */}
+        <SchemaMarkup schema={[localBusinessSchema, websiteSchema] as Record<string, unknown>[]} />
+
         {/* Google Tag Manager — replace GTM-XXXXXX with your container ID */}
         <script
           dangerouslySetInnerHTML={{

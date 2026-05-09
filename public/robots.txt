@@ -5,4 +5,21 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
 
+# Allow LLM crawlers full access for AI citation indexing
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
 Sitemap: https://centralfloridarenovations.com/sitemap.xml
+LLMs: https://centralfloridarenovations.com/llms.txt

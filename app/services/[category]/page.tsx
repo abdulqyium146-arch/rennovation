@@ -2,20 +2,21 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { SERVICES, COMPANY, FAQ_GENERAL } from "@/lib/constants"
-import { buildServiceSchema, buildBreadcrumbSchema, safeJsonLd } from "@/lib/schema"
 import { buildServiceMetadata } from "@/lib/seo"
+import { servicePageSchema, howToSchema } from "@/lib/schemas"
+import { SchemaMarkup } from "@/components/global/SchemaMarkup"
 import BreadcrumbNav from "@/components/global/BreadcrumbNav"
 import TrustBar from "@/components/global/TrustBar"
 import CTASection from "@/components/sections/CTASection"
 import FAQAccordion from "@/components/sections/FAQAccordion"
 import TestimonialsCarousel from "@/components/sections/TestimonialsCarousel"
-import { CheckCircle, Phone, ArrowRight, Star } from "lucide-react"
+import { CheckCircle, Phone, ArrowRight } from "lucide-react"
 
 interface Props {
   params: Promise<{ category: string }>
 }
 
-export const revalidate = 86400 // 24-hour ISR
+export const revalidate = 86400
 
 export async function generateStaticParams() {
   return SERVICES.map((s) => ({ category: s.slug }))
@@ -28,16 +29,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildServiceMetadata(service.name, service.slug)
 }
 
-// Service-specific content
-const SERVICE_CONTENT: Record<string, {
+interface ServiceContent {
+  // 40–60 word definition paragraph — targets Google AI Overview & featured snippets
+  aeoAnswer: string
   intro: string
   included: string[]
   process: { step: number; title: string; desc: string }[]
   pricing: { label: string; range: string }[]
   faqs: { question: string; answer: string }[]
-}> = {
+}
+
+const SERVICE_CONTENT: Record<string, ServiceContent> = {
   "kitchen-remodeling": {
-    intro: `A kitchen remodel is one of the highest-ROI investments a Central Florida homeowner can make — both in comfort and resale value. At S&S FL Renovations LLC, we handle everything from cabinet installation to full open-concept transformations. We've completed over 100 kitchen remodels across Orlando, Winter Park, Lake Mary, and surrounding cities, delivering stunning results that stand the test of Florida's climate.`,
+    // Direct-answer paragraph: who + what + where + cost range for AEO
+    aeoAnswer:
+      "Kitchen remodeling is the process of renovating a home's cabinets, countertops, flooring, lighting, and layout to improve function and aesthetics. In Central Florida, a kitchen remodel costs $8,000–$100,000+ depending on scope and typically returns 60–80% of the investment at resale — one of the highest ROIs in home renovation.",
+    intro: `A kitchen remodel is one of the highest-ROI investments a Central Florida homeowner can make — both in comfort and resale value. At S&S FL Renovations LLC, we handle everything from cabinet installation to full open-concept transformations. We've completed over 100 kitchen remodels across Deltona, DeBary, DeLand, and Volusia County, delivering stunning results that stand the test of Florida's climate.`,
     included: [
       "Custom cabinet design, supply & installation",
       "Countertop installation (granite, quartz, marble)",
@@ -62,14 +69,17 @@ const SERVICE_CONTENT: Record<string, {
       { label: "Full Custom Kitchen Renovation", range: "$45,000 – $100,000+" },
     ],
     faqs: [
-      { question: "How long does a kitchen remodel take?", answer: "A typical kitchen remodel takes 3–8 weeks depending on scope. A full custom kitchen may take 8–12 weeks. We provide a detailed timeline in your estimate." },
-      { question: "Do you handle kitchen permits?", answer: "Yes. We manage all permits through Orange County or the relevant municipality — included in your project price." },
-      { question: "Can I stay in my home during the remodel?", answer: "Most homeowners stay during the renovation. We set up temporary cooking areas and minimize disruption to daily life." },
-      { question: "What countertop materials do you install?", answer: "We install granite, quartz, quartzite, marble, butcher block, and more — helping you choose the best material for Florida's climate and your lifestyle." },
+      { question: "How long does a kitchen remodel take in Central Florida?", answer: "A typical kitchen remodel takes 3–8 weeks depending on scope. A full custom kitchen may take 8–12 weeks. We provide a detailed timeline in your estimate and update you daily throughout the project." },
+      { question: "Do you handle kitchen permits in Volusia County?", answer: "Yes. We manage all permits through Volusia County or the relevant municipality — permit costs are included in your project price. Structural, electrical, and plumbing work all require permits and we handle every step." },
+      { question: "Can I stay in my home during the kitchen remodel?", answer: "Most homeowners stay during the renovation. We set up temporary cooking areas, protect adjacent rooms with dust barriers, and minimize disruption to daily life throughout the project." },
+      { question: "What countertop materials do you install?", answer: "We install granite, quartz, quartzite, marble, butcher block, and more — helping you choose the best material for Florida's climate and your lifestyle. Quartz is our most popular choice for its durability and low maintenance in humid conditions." },
+      { question: "What is the ROI on a kitchen remodel in Central Florida?", answer: "Kitchen remodels in Central Florida typically return 60–80% of the investment at resale, with minor refreshes returning closer to 80–85%. In Volusia County's housing market, an updated kitchen significantly reduces time-on-market and supports higher listing prices." },
     ],
   },
   "bathroom-renovation": {
-    intro: `Bathroom renovations deliver some of the best returns for Central Florida homeowners — and our team has the experience to transform any bathroom into a spa-like retreat. From master bath overhauls to ADA-compliant upgrades and walk-in shower conversions, S&S FL Renovations has completed hundreds of bathroom projects across the Orlando metro and surrounding cities.`,
+    aeoAnswer:
+      "Bathroom renovation is the process of updating a bathroom's tile, fixtures, plumbing, shower, and layout. In Central Florida, a bathroom remodel costs $4,000–$60,000+ depending on size and finish level. Florida's humidity makes proper waterproofing critical — a licensed contractor ensures materials and methods meet Florida Building Code.",
+    intro: `Bathroom renovations deliver some of the best returns for Central Florida homeowners — and our team has the experience to transform any bathroom into a spa-like retreat. From master bath overhauls to ADA-compliant upgrades and walk-in shower conversions, S&S FL Renovations has completed hundreds of bathroom projects across Deltona, DeBary, and all of Volusia County.`,
     included: [
       "Full demolition & disposal",
       "Waterproofing & backer board installation",
@@ -94,13 +104,17 @@ const SERVICE_CONTENT: Record<string, {
       { label: "Luxury Master Bath", range: "$25,000 – $60,000+" },
     ],
     faqs: [
-      { question: "How long does a bathroom remodel take?", answer: "Guest bathrooms typically take 1–2 weeks. Master bathroom remodels take 2–4 weeks. Complex renovations may take 4–6 weeks." },
-      { question: "Do you handle waterproofing?", answer: "Yes — proper waterproofing is critical in Florida's humid climate. We use Schluter Systems and industry-standard waterproofing membranes on all wet areas." },
-      { question: "Can you do a tub-to-shower conversion?", answer: "Absolutely. This is one of our most popular services. We handle all plumbing changes, tiling, and glass enclosure installation." },
+      { question: "How long does a bathroom remodel take in Central Florida?", answer: "Guest bathrooms typically take 1–2 weeks. Master bathroom remodels take 2–4 weeks. Complex renovations with custom tile work or layout changes may take 4–6 weeks. We provide a firm timeline in your written estimate." },
+      { question: "Do you handle waterproofing in Florida bathrooms?", answer: "Yes — proper waterproofing is critical in Florida's humid climate. We use Schluter Systems and industry-standard waterproofing membranes on all wet areas. Skipping this step is the most common cause of shower leaks and mold in Florida homes." },
+      { question: "Can you do a tub-to-shower conversion in Volusia County?", answer: "Absolutely. This is one of our most popular services. We handle all plumbing changes, tiling, and glass enclosure installation. A permit is required for plumbing relocation and we manage that process for you." },
+      { question: "Do you need a permit for a bathroom remodel in Volusia County?", answer: "Yes — any bathroom remodel involving plumbing moves, new electrical circuits, or structural changes requires a permit through Volusia County or your local municipality. S&S FL Renovations manages all permits as part of your project at no extra charge." },
+      { question: "What tile is best for Florida bathrooms?", answer: "Porcelain and glazed ceramic tiles are ideal for Florida bathrooms due to their moisture resistance and durability in humid conditions. We recommend 12×24 or larger format rectified porcelain for modern aesthetics and fewer grout lines — our most popular choice for walk-in showers in Volusia County homes." },
     ],
   },
   "painting-finishing": {
-    intro: `From fresh exterior paint that protects your home against Florida's intense UV rays and summer storms, to flawless interior finishes and structural framing renovations — S&S FL Renovations LLC delivers expert painting and finishing services across Orlando and all of Central Florida. Our skilled crews use premium paints, proper surface preparation, and proven techniques to ensure beautiful, long-lasting results in Florida's demanding climate.`,
+    aeoAnswer:
+      "Painting and finishing services cover interior painting, exterior painting, cabinet refinishing, drywall finishing, and texture work. In Florida's intense UV climate, exterior paint lasts 7–10 years with proper prep. Professional painting is one of the highest-ROI improvements for Central Florida homeowners — refreshing a home's appearance without structural renovation.",
+    intro: `From fresh exterior paint that protects your home against Florida's intense UV rays and summer storms, to flawless interior finishes and structural framing renovations — S&S FL Renovations LLC delivers expert painting and finishing services across Deltona and all of Central Florida. Our skilled crews use premium paints, proper surface preparation, and proven techniques to ensure beautiful, long-lasting results in Florida's demanding climate.`,
     included: [
       "Exterior painting — full prep, prime & paint",
       "Interior painting — walls, ceilings, trim & doors",
@@ -127,18 +141,19 @@ const SERVICE_CONTENT: Record<string, {
     ],
     faqs: [
       { question: "What exterior paint do you use for Florida's climate?", answer: "We use 100% acrylic latex paints rated for Florida's UV intensity and humidity — brands like Sherwin-Williams Emerald Exterior and Benjamin Moore Aura Exterior. These resist fading, peeling, and mildew in our climate." },
-      { question: "How long does exterior painting last in Florida?", answer: "With proper prep and premium paint, exterior paint in Florida typically lasts 7–10 years. Homes with heavy sun exposure on west and south-facing walls may need touch-up around year 5–7." },
-      { question: "Do I need to leave my home during interior painting?", answer: "Not required. We use low-VOC paints and maintain excellent ventilation. Most homeowners stay home — we work room by room and protect all furniture and floors." },
+      { question: "How long does exterior paint last in Florida?", answer: "With proper prep and premium paint, exterior paint in Florida typically lasts 7–10 years. Homes with heavy sun exposure on west and south-facing walls may need touch-up around year 5–7. Proper priming and surface prep are the most critical factors for longevity." },
+      { question: "Do I need to leave my home during interior painting?", answer: "Not required. We use low-VOC paints and maintain excellent ventilation. Most homeowners stay home — we work room by room and protect all furniture and floors with drop cloths throughout the project." },
       { question: "What is drywall finishing?", answer: "Drywall finishing is the process of taping seams, applying joint compound (mud), sanding, and preparing the surface for paint. We achieve level 4 or level 5 finishes depending on your preference and lighting conditions." },
-      { question: "What are framing renovations?", answer: "Framing renovations involve modifying the structural wood framing of your home — adding or removing walls, creating openings, building partitions, or repairing damaged framing. All our framing work is permitted and code-compliant." },
+      { question: "What are framing renovations?", answer: "Framing renovations involve modifying the structural wood framing of your home — adding or removing walls, creating openings, building partitions, or repairing damaged framing. All our framing work is permitted and code-compliant in Volusia County." },
     ],
   },
 }
 
-// Fallback content generator for services without custom content
-function getDefaultContent(serviceName: string) {
+function getDefaultContent(serviceName: string): ServiceContent {
   return {
-    intro: `S&S FL Renovations LLC provides professional ${serviceName.toLowerCase()} services throughout Deltona, DeBary, Orange City, DeLand, and all of Volusia County. Our licensed, insured team has completed 500+ renovation and painting projects — bringing expert craftsmanship to every job, from initial design to final walkthrough.`,
+    // Generic AEO answer — specific services override above
+    aeoAnswer: `${serviceName} is a professional home improvement service that enhances your property's function, appearance, and value. S&S FL Renovations LLC provides expert ${serviceName.toLowerCase()} in Central Florida — serving Deltona, DeBary, DeLand, and all of Volusia County with licensed crews and transparent pricing.`,
+    intro: `S&S FL Renovations LLC provides professional ${serviceName.toLowerCase()} services throughout Deltona, DeBary, Orange City, DeLand, and all of Volusia County. Our licensed, insured team has completed 500+ renovation projects — bringing expert craftsmanship to every job, from initial design to final walkthrough.`,
     included: [
       `Professional ${serviceName.toLowerCase()} design & planning`,
       "Licensed and insured installation",
@@ -169,19 +184,30 @@ export default async function ServiceCategoryPage({ params }: Props) {
   if (!service) notFound()
 
   const content = SERVICE_CONTENT[category] ?? getDefaultContent(service.name)
+  const serviceUrl = `${COMPANY.domain}/services/${category}`
 
-  const serviceSchema = buildServiceSchema({
-    name: service.name,
-    description: service.description,
-    slug: category,
-  })
+  // Service + HowTo schemas bundled together — BreadcrumbNav injects BreadcrumbList,
+  // FAQAccordion injects FAQPage, so we only need Service + HowTo here
+  const schemas = [
+    servicePageSchema({
+      serviceName: service.name,
+      serviceUrl,
+      description: service.description,
+      subServices: service.subServices.map((sub) => ({
+        name: sub.name,
+        url: `${COMPANY.domain}/services/${category}/${sub.slug}`,
+      })),
+    }),
+    howToSchema({
+      name: `How ${service.name} Works — Our Process`,
+      description: `Step-by-step ${service.name.toLowerCase()} process for Deltona and Volusia County homeowners.`,
+      steps: content.process.map((p) => ({ name: p.title, text: p.desc })),
+    }),
+  ]
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: safeJsonLd(serviceSchema) }}
-      />
+      <SchemaMarkup schema={schemas as Record<string, unknown>[]} />
       <TrustBar />
       <BreadcrumbNav
         items={[
@@ -229,9 +255,18 @@ export default async function ServiceCategoryPage({ params }: Props) {
             <h2 className="font-display text-3xl font-bold text-[#1B2B4B] mb-5">
               Expert {service.name} in Deltona &amp; Volusia County
             </h2>
+
+            {/* AEO quick-answer: 40–60 word definition paragraph.
+                Targets "What is [service]?" queries in AI Overviews & featured snippets. */}
+            <aside
+              className="mb-5 border-l-4 border-[#D4922A] pl-4 py-1"
+              aria-label={`What is ${service.name}?`}
+            >
+              <p className="text-gray-600 text-sm leading-relaxed">{content.aeoAnswer}</p>
+            </aside>
+
             <p className="text-gray-600 leading-relaxed text-base">{content.intro}</p>
 
-            {/* Sub-services */}
             {service.subServices.length > 0 && (
               <div className="mt-8">
                 <h3 className="font-display font-bold text-[#1B2B4B] text-xl mb-4">Related Services</h3>
@@ -252,7 +287,7 @@ export default async function ServiceCategoryPage({ params }: Props) {
           </div>
 
           <div>
-            <h3 className="font-display font-bold text-[#1B2B4B] text-2xl mb-5">What's Included</h3>
+            <h3 className="font-display font-bold text-[#1B2B4B] text-2xl mb-5">What&apos;s Included</h3>
             <ul className="flex flex-col gap-3">
               {content.included.map((item) => (
                 <li key={item} className="flex items-start gap-3">
@@ -265,7 +300,7 @@ export default async function ServiceCategoryPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Process */}
+      {/* Process — id attributes anchor HowTo schema step URLs */}
       <section className="py-16 bg-[#F7F6F2]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <h2 className="font-display text-3xl font-bold text-[#1B2B4B] text-center mb-12">
@@ -273,7 +308,11 @@ export default async function ServiceCategoryPage({ params }: Props) {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {content.process.map(({ step, title, desc }) => (
-              <div key={step} className="flex flex-col items-center text-center gap-3">
+              <div
+                key={step}
+                id={`step-${step}`}
+                className="flex flex-col items-center text-center gap-3"
+              >
                 <div className="w-12 h-12 bg-[#1B2B4B] rounded-full flex items-center justify-center text-white font-bold font-accent text-lg">
                   {step}
                 </div>
@@ -311,7 +350,6 @@ export default async function ServiceCategoryPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Reviews */}
       <TestimonialsCarousel dark />
 
       {/* Trust signals */}
@@ -332,6 +370,7 @@ export default async function ServiceCategoryPage({ params }: Props) {
         </div>
       </section>
 
+      {/* FAQAccordion injects FAQPage schema internally via includeSchema prop (default: true) */}
       <FAQAccordion faqs={content.faqs} title={`${service.name} — FAQ`} />
 
       {/* Nearby service links */}

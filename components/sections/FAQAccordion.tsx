@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { ChevronDown, MessageCircle } from "lucide-react"
 import { FAQ_GENERAL } from "@/lib/constants"
-import { buildFAQSchema } from "@/lib/schema"
+import { buildFAQSchema, safeJsonLd } from "@/lib/schema"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { COMPANY } from "@/lib/constants"
@@ -79,7 +79,7 @@ export default function FAQAccordion({
       {includeSchema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFAQSchema(faqs)) }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(buildFAQSchema(faqs)) }}
         />
       )}
       <div className="max-w-6xl mx-auto px-4 sm:px-6">

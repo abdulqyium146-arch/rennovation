@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
-import Script from "next/script"
 import { buildMetadata } from "@/lib/seo"
+import { organizationSchema, siteNavigationSchema, videoObjectSchema } from "@/lib/schemas"
+import { SchemaMarkup } from "@/components/global/SchemaMarkup"
 import { COMPANY } from "@/lib/constants"
 
 // Global components
@@ -36,39 +37,47 @@ export const metadata: Metadata = buildMetadata({
   ],
 })
 
-const heroVideoSchema = {
-  "@context": "https://schema.org",
-  "@type": "VideoObject",
-  name: "Deltona FL Home Renovation & Painting — S&S FL Renovations LLC | Volusia County Contractor",
-  description:
-    "Watch S&S FL Renovations LLC's licensed contractors performing real home renovation and painting work in Deltona, FL — cabinet painting, popcorn ceiling removal, bathroom remodels, exterior painting and more across Volusia County.",
-  contentUrl: `${COMPANY.domain}/videos/central-florida-home-renovation-hero-orlando-fl.mp4`,
-  thumbnailUrl: `${COMPANY.domain}/gallery/home-renovation-interior-central-florida.webp`,
-  uploadDate: "2026-03-27T00:00:00.000Z",
-  duration: "PT1M",
-  embedUrl: COMPANY.domain,
-  keywords:
-    "home renovation Deltona FL, house painting Deltona FL, cabinet painting Volusia County, popcorn ceiling removal Deltona, renovation contractor DeBary FL",
-  inLanguage: "en-US",
-  publisher: {
-    "@type": "Organization",
-    name: "S&S FL Renovations LLC",
-    url: COMPANY.domain,
-    logo: {
-      "@type": "ImageObject",
-      url: `${COMPANY.domain}/icon-512.png`,
-    },
-  },
-}
+// Primary nav items — used by SiteNavigationElement to signal site structure
+const NAV_ITEMS = [
+  { name: "Home", url: "/" },
+  { name: "Services", url: "/services" },
+  { name: "Locations", url: "/locations" },
+  { name: "Gallery", url: "/gallery" },
+  { name: "About", url: "/about" },
+  { name: "Blog", url: "/blog" },
+  { name: "Testimonials", url: "/testimonials" },
+  { name: "Contact", url: "/contact" },
+  { name: "Free Estimate", url: "/free-estimate" },
+]
 
 export default function HomePage() {
   return (
     <>
-      <Script
-        id="hero-video-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(heroVideoSchema) }}
+      {/* Homepage-specific schemas.
+          LocalBusiness + WebSite are emitted globally in app/layout.tsx.
+          Here we add: Organization (entity + contactPoint + RequestQuote action),
+          SiteNavigationElement (signals site hierarchy to Google's entity graph),
+          and VideoObject (hero reel — server-rendered so crawlers see it in initial HTML,
+          not deferred via next/script which fires after hydration). */}
+      <SchemaMarkup
+        schema={[
+          organizationSchema,
+          siteNavigationSchema(NAV_ITEMS),
+          videoObjectSchema({
+            name: "Deltona FL Home Renovation & Painting — S&S FL Renovations LLC | Volusia County Contractor",
+            description:
+              "Watch S&S FL Renovations LLC's licensed contractors performing real home renovation and painting work in Deltona, FL — cabinet painting, popcorn ceiling removal, bathroom remodels, exterior painting and more across Volusia County.",
+            contentUrl: `${COMPANY.domain}/videos/central-florida-home-renovation-hero-orlando-fl.mp4`,
+            thumbnailUrl: `${COMPANY.domain}/gallery/home-renovation-interior-central-florida.webp`,
+            uploadDate: "2026-03-27T00:00:00.000Z",
+            duration: "PT1M",
+            embedUrl: COMPANY.domain,
+            keywords:
+              "home renovation Deltona FL, house painting Deltona FL, cabinet painting Volusia County, popcorn ceiling removal Deltona, renovation contractor DeBary FL",
+          }),
+        ] as Record<string, unknown>[]}
       />
+
       {/* ── Top bar: license, BBB, hours, Google rating ── */}
       <TrustBar />
 
@@ -108,7 +117,7 @@ export default function HomePage() {
       {/* ── SECTION 10: Service area — county-grouped cities with map visual ── */}
       <ServiceAreaMap />
 
-      {/* ── SECTION 11: FAQ — two-column, schema-marked ── */}
+      {/* ── SECTION 11: FAQ — two-column, FAQPage schema emitted by FAQAccordion ── */}
       <FAQAccordion
         title="Renovation & Painting Questions — Answered for Deltona Homeowners"
         twoColumn
