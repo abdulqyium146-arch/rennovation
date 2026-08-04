@@ -63,30 +63,33 @@ export default function CTASection({
           </h2>
           <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">{subtitle}</p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+          {/* CTAs — Call first (primary), Estimate second */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+            <a
+              href={COMPANY.phoneHref}
+              className="relative group inline-flex items-center justify-center gap-2.5 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-10 py-5 rounded-xl text-lg transition-all shadow-2xl shadow-[#D4922A]/25 hover:shadow-[#D4922A]/50 hover:-translate-y-0.5"
+              aria-label={`Call ${COMPANY.name} now at ${COMPANY.phone}`}
+            >
+              <span className="absolute inset-0 rounded-xl animate-ping bg-[#D4922A]/25 pointer-events-none" />
+              <Phone size={20} className="relative" />
+              <span className="relative">Call Now — {COMPANY.phone}</span>
+            </a>
             <Link
               href={primaryHref}
-              className="group inline-flex items-center justify-center gap-2 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-10 py-5 rounded-xl text-lg transition-all shadow-2xl shadow-[#D4922A]/25 hover:shadow-[#D4922A]/50 hover:-translate-y-0.5"
+              className="group inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white text-white font-bold px-10 py-5 rounded-xl text-lg transition-all hover:bg-white/5"
             >
               {primaryLabel}
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            <a
-              href={COMPANY.phoneHref}
-              className="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white text-white font-bold px-10 py-5 rounded-xl text-lg transition-all hover:bg-white/5"
-            >
-              <Phone size={20} className="text-[#D4922A]" />
-              {COMPANY.phone}
-            </a>
           </div>
+          <p className="text-gray-400 text-sm mt-3 mb-7">⚡ We answer 24/7 — average response under 2 minutes</p>
 
           {/* Micro-trust row */}
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
             {[
               { icon: CheckCircle, text: "No obligation" },
               { icon: CheckCircle, text: "100% free estimate" },
-              { icon: CheckCircle, text: "Response within 24hrs" },
+              { icon: CheckCircle, text: "Licensed & insured" },
               showFinancing ? { icon: DollarSign, text: "0% financing available" } : null,
             ]
               .filter(Boolean)

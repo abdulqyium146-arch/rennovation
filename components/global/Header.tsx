@@ -152,15 +152,17 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-3">
               <a
                 href={COMPANY.phoneHref}
-                className="flex items-center gap-2 text-white hover:text-[#F0B84A] transition-colors text-sm font-semibold"
-                aria-label={`Call S&S FL Renovations at ${COMPANY.phone}`}
+                className="relative flex items-center gap-2 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-4 py-2.5 rounded-lg text-sm transition-colors whitespace-nowrap shadow-lg"
+                aria-label={`Call S&S FL Renovations now at ${COMPANY.phone}`}
               >
-                <Phone size={15} className="text-[#D4922A]" />
-                {COMPANY.phone}
+                <span className="absolute inset-0 rounded-lg animate-ping bg-[#D4922A]/30 pointer-events-none" />
+                <span className="relative w-2 h-2 bg-white rounded-full shrink-0" />
+                <Phone size={14} className="relative shrink-0" />
+                <span className="relative">{COMPANY.phone}</span>
               </a>
               <Link
                 href="/free-estimate"
-                className="bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-5 py-2.5 rounded-lg text-sm transition-colors whitespace-nowrap shadow-lg"
+                className="bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold px-5 py-2.5 rounded-lg text-sm transition-colors whitespace-nowrap"
               >
                 Free Estimate
               </Link>
@@ -260,24 +262,28 @@ export default function Header() {
       </header>
 
       {/* ── Mobile sticky bottom call bar ── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
+      <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
         <div className="grid grid-cols-2">
           <a
             href={COMPANY.phoneHref}
-            className="flex items-center justify-center gap-2 bg-[#1B2B4B] text-white font-bold py-4 text-sm border-r border-white/10"
-            aria-label={`Call ${COMPANY.name}`}
+            className="relative flex flex-col items-center justify-center gap-0.5 bg-[#D4922A] text-white font-bold py-3.5 text-sm border-r border-[#F0B84A]/30"
+            aria-label={`Call ${COMPANY.name} now`}
           >
-            <Phone size={16} className="text-[#D4922A]" />
-            {COMPANY.phone}
+            <span className="absolute inset-0 animate-ping bg-[#D4922A]/30 pointer-events-none" />
+            <div className="relative flex items-center gap-1.5">
+              <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+              <Phone size={15} />
+              <span>Call Now</span>
+            </div>
+            <span className="relative text-[10px] text-white/80 font-normal">{COMPANY.phone}</span>
           </a>
-          <a
-            href={COMPANY.phone2Href}
-            className="flex items-center justify-center gap-2 bg-[#D4922A] text-white font-bold py-4 text-sm"
-            aria-label="Second phone line"
+          <Link
+            href="/free-estimate"
+            className="flex flex-col items-center justify-center gap-0.5 bg-[#1B2B4B] text-white font-bold py-3.5 text-sm"
           >
-            <Phone size={16} />
-            {COMPANY.phone2}
-          </a>
+            <span className="text-[#D4922A]">Free Estimate</span>
+            <span className="text-[10px] text-white/60 font-normal">No obligation</span>
+          </Link>
         </div>
       </div>
     </>
