@@ -8,7 +8,7 @@ import BreadcrumbNav from "@/components/global/BreadcrumbNav"
 import TrustBar from "@/components/global/TrustBar"
 import CTASection from "@/components/sections/CTASection"
 import FAQAccordion from "@/components/sections/FAQAccordion"
-import { CheckCircle, Phone, ArrowRight } from "lucide-react"
+import { CheckCircle, Phone } from "lucide-react"
 
 interface Props {
   params: Promise<{ category: string; service: string }>
@@ -75,17 +75,13 @@ export default async function SubServicePage({ params }: Props) {
               Professional {sub.name.toLowerCase()} services by S&S FL Renovations LLC — locally based in Deltona, FL. Licensed, insured, and serving Volusia County and surrounding areas with 10+ years of experience.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/free-estimate"
-                className="inline-flex items-center gap-2 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-6 py-4 rounded-lg transition-colors shadow-xl"
-              >
-                Get Free Estimate <ArrowRight size={18} />
-              </Link>
               <a
                 href={COMPANY.phoneHref}
-                className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white text-white font-bold px-6 py-4 rounded-lg transition-colors"
+                className="relative inline-flex items-center gap-2 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-7 py-4 rounded-lg transition-colors shadow-xl"
               >
-                <Phone size={18} /> {COMPANY.phone}
+                <span className="absolute inset-0 rounded-lg animate-ping bg-[#D4922A]/30 pointer-events-none" />
+                <Phone size={18} className="relative" />
+                <span className="relative">Call Now — {COMPANY.phone}</span>
               </a>
             </div>
           </div>
@@ -164,8 +160,8 @@ export default async function SubServicePage({ params }: Props) {
 
       <FAQAccordion title={`${sub.name} — FAQ`} />
       <CTASection
-        title={`Ready to Start Your ${sub.name} Project?`}
-        subtitle="Get your free, no-obligation estimate from Deltona and Volusia County's most trusted renovation and painting team."
+        title={`Start Your ${sub.name} Project — Call Now`}
+        subtitle={`Licensed & insured · 4.9★ (127 reviews) · Serving Deltona & Volusia County`}
       />
     </>
   )

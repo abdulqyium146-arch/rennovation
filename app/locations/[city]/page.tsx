@@ -10,7 +10,7 @@ import TrustBar from "@/components/global/TrustBar"
 import CTASection from "@/components/sections/CTASection"
 import FAQAccordion from "@/components/sections/FAQAccordion"
 import ServicesGrid from "@/components/sections/ServicesGrid"
-import { MapPin, Phone, ArrowRight, CheckCircle } from "lucide-react"
+import { MapPin, Phone, CheckCircle } from "lucide-react"
 
 interface Props {
   params: Promise<{ city: string }>
@@ -94,6 +94,18 @@ const CITY_CONTENT: Record<string, CityContent> = {
       "Fence & deck staining for Sanford's outdoor living spaces",
     ],
     landmarks: ["Historic Sanford downtown", "Lake Monroe waterfront", "Celery City Historic District", "Rinehart Road corridor"],
+  },
+  "lake-mary": {
+    aeoAnswer:
+      "S&S FL Renovations LLC provides home renovation and remodeling services in Lake Mary, FL (Seminole County) — kitchen remodeling, bathroom renovations, exterior remodeling, home improvement contracting, and painting. Serving Lake Mary homeowners with licensed crews, transparent pricing, and free in-home estimates from our Deltona base — no travel surcharge.",
+    intro: `Lake Mary, FL is one of Seminole County's most sought-after communities — known for its master-planned neighborhoods, top-rated schools, and high home values that reward renovation investment. S&S FL Renovations LLC serves Lake Mary homeowners with the full range of renovation and remodeling services: kitchen remodeling, bathroom renovations, exterior remodeling, home improvement projects, cabinet painting, flooring, and whole-home transformations. With Lake Mary home values among the highest in Central Florida, every dollar invested in renovation returns outsized value at resale.`,
+    highlights: [
+      "Kitchen remodeling & cabinet painting — most-requested service in Lake Mary",
+      "Exterior remodeling & painting built for Lake Mary's HOA standards",
+      "Bathroom renovations, flooring & full home remodeling — licensed Seminole County contractor",
+      "Free in-home estimates — no travel surcharge to Lake Mary",
+    ],
+    landmarks: ["Heathrow community", "Magnolia Plantation", "Lake Mary City Center area", "Colonial TownPark corridor", "Timacuan Golf community", "Seminole County neighborhoods"],
   },
   "lake-helen": {
     aeoAnswer:
@@ -187,17 +199,14 @@ export default async function CityPage({ params }: Props) {
               Licensed, insured home renovation services in {city.name}. Kitchen remodeling, bathroom renovation, outdoor living &amp; full-home remodels — serving all of {city.county} County.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/free-estimate"
-                className="inline-flex items-center gap-2 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-6 py-4 rounded-lg transition-colors shadow-xl"
-              >
-                Get Free Estimate in {city.name} <ArrowRight size={18} />
-              </Link>
               <a
                 href={COMPANY.phoneHref}
-                className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white text-white font-bold px-6 py-4 rounded-lg transition-colors"
+                className="relative inline-flex items-center gap-2 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-7 py-4 rounded-lg transition-colors shadow-xl"
+                aria-label={`Call S&S FL Renovations now for ${city.name} renovation services`}
               >
-                <Phone size={18} /> {COMPANY.phone}
+                <span className="absolute inset-0 rounded-lg animate-ping bg-[#D4922A]/30 pointer-events-none" />
+                <Phone size={18} className="relative" />
+                <span className="relative">Call Now — {COMPANY.phone}</span>
               </a>
             </div>
           </div>
@@ -255,20 +264,22 @@ export default async function CityPage({ params }: Props) {
           </div>
 
           <div className="bg-[#1B2B4B] text-white rounded-xl p-6 flex flex-col gap-4 h-fit">
-            <h3 className="font-display font-bold text-xl">Get a Free Quote in {city.name}</h3>
-            <p className="text-gray-300 text-sm">We respond within 24 hours and schedule in-home consultations usually within 48 hours.</p>
-            <Link
-              href="/free-estimate"
-              className="bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-5 py-3 rounded-lg text-center transition-colors"
-            >
-              Request Free Estimate
-            </Link>
+            <div className="inline-flex items-center gap-2 bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1.5 rounded-full border border-green-500/30 self-start">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              Available Now
+            </div>
+            <h3 className="font-display font-bold text-xl">Call Us in {city.name}</h3>
+            <p className="text-gray-300 text-sm">We answer 24/7 — free in-home estimate within 48 hours.</p>
             <a
               href={COMPANY.phoneHref}
-              className="flex items-center justify-center gap-2 border border-white/30 text-white font-semibold px-5 py-3 rounded-lg hover:bg-white/10 transition-colors text-sm"
+              className="relative flex items-center justify-center gap-2 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-5 py-4 rounded-lg text-center transition-colors text-lg"
+              aria-label={`Call now for renovation services in ${city.name}`}
             >
-              <Phone size={16} /> {COMPANY.phone}
+              <span className="absolute inset-0 rounded-lg animate-ping bg-[#D4922A]/25 pointer-events-none" />
+              <Phone size={18} className="relative" />
+              <span className="relative">{COMPANY.phone}</span>
             </a>
+            <p className="text-center text-gray-400 text-xs">⚡ Avg response: under 2 min · Se Habla Español</p>
           </div>
         </div>
       </section>
@@ -307,8 +318,8 @@ export default async function CityPage({ params }: Props) {
       </section>
 
       <CTASection
-        title={`Get Your Free Renovation Estimate in ${city.name}`}
-        subtitle={`Serving ${city.name} and all of ${city.county} County. Call today or fill out our form.`}
+        title={`Ready to Renovate Your ${city.name} Home?`}
+        subtitle={`Call now — we serve all of ${city.county} County. Licensed, insured, 127+ five-star reviews.`}
       />
     </>
   )
