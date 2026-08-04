@@ -1,0 +1,311 @@
+export const COMPANY = {
+  name: "S&S FL Renovations LLC",
+  phone: "(380) 214-0824",
+  phoneHref: "tel:+13802140824",
+  phone2: "(380) 214-0824",
+  phone2Href: "tel:+13802140824",
+  email: "info@centralfloridarenovations.com",
+  address: "1757 S Village Dr, Deltona, FL 32725",
+  licenseNumber: "FL-CGC1234567",
+  founded: 2014,
+  rating: 4.9,
+  reviewCount: 127,
+  projectCount: 500,
+  domain: "https://centralfloridarenovations.com",
+  logo: "/images/logo.webp",
+  spanish: true, // Se Habla Español
+}
+
+export const CITIES = [
+  { name: "Deltona", slug: "deltona", county: "Volusia" },
+  { name: "DeBary", slug: "debary", county: "Volusia" },
+  { name: "Orange City", slug: "orange-city", county: "Volusia" },
+  { name: "DeLand", slug: "deland", county: "Volusia" },
+  { name: "Sanford", slug: "sanford", county: "Seminole" },
+  { name: "Lake Helen", slug: "lake-helen", county: "Volusia" },
+  { name: "Osteen", slug: "osteen", county: "Volusia" },
+  { name: "Enterprise", slug: "enterprise", county: "Volusia" },
+  { name: "Oak Hill", slug: "oak-hill", county: "Volusia" },
+  { name: "Cassadaga", slug: "cassadaga", county: "Volusia" },
+  { name: "Lake Monroe", slug: "lake-monroe", county: "Volusia" },
+  { name: "Edgewater", slug: "edgewater", county: "Volusia" },
+  { name: "New Smyrna Beach", slug: "new-smyrna-beach", county: "Volusia" },
+  { name: "Port Orange", slug: "port-orange", county: "Volusia" },
+  { name: "Daytona Beach", slug: "daytona-beach", county: "Volusia" },
+  { name: "Longwood", slug: "longwood", county: "Seminole" },
+  { name: "Apopka", slug: "apopka", county: "Orange" },
+  { name: "Altamonte Springs", slug: "altamonte-springs", county: "Seminole" },
+  { name: "Lake Mary", slug: "lake-mary", county: "Seminole" },
+  { name: "Oviedo", slug: "oviedo", county: "Seminole" },
+]
+
+export const SERVICES = [
+  {
+    name: "Kitchen Remodeling",
+    slug: "kitchen-remodeling",
+    icon: "ChefHat",
+    description: "Complete kitchen transformations from cabinet installation to full renovations — serving Deltona and Volusia County homeowners.",
+    subServices: [
+      { name: "Cabinet Installation", slug: "cabinet-installation" },
+      { name: "Countertop Installation", slug: "countertop-installation" },
+      { name: "Kitchen Island Installation", slug: "kitchen-island-installation" },
+      { name: "Open Concept Kitchen", slug: "open-concept-kitchen" },
+      { name: "Cabinet Refacing", slug: "kitchen-cabinet-refacing" },
+      { name: "Backsplash Installation", slug: "kitchen-backsplash-installation" },
+    ],
+  },
+  {
+    name: "Bathroom Renovation",
+    slug: "bathroom-renovation",
+    icon: "Bath",
+    description: "Luxury bathroom upgrades including showers, vanities, and full remodels for Deltona, DeBary, Orange City, and surrounding Volusia County communities.",
+    subServices: [
+      { name: "Master Bathroom Remodel", slug: "master-bathroom-remodel" },
+      { name: "Walk-In Shower Installation", slug: "walk-in-shower-installation" },
+      { name: "Bathtub to Shower Conversion", slug: "bathtub-to-shower-conversion" },
+      { name: "Tile Installation", slug: "tile-installation" },
+      { name: "Vanity Installation", slug: "vanity-installation" },
+      { name: "ADA Accessible Bathroom", slug: "ada-accessible-bathroom" },
+    ],
+  },
+  {
+    name: "Room Additions",
+    slug: "room-additions",
+    icon: "Home",
+    description: "Expand your living space with expert room addition construction — trusted by Deltona and Volusia County homeowners.",
+    subServices: [
+      { name: "Master Bedroom Addition", slug: "master-bedroom-addition" },
+      { name: "Sunroom Addition", slug: "sunroom-addition" },
+      { name: "Florida Room Addition", slug: "florida-room-addition" },
+      { name: "Garage Conversion", slug: "garage-conversion" },
+      { name: "Second Story Addition", slug: "second-story-addition" },
+    ],
+  },
+  {
+    name: "Outdoor Renovations",
+    slug: "outdoor-renovations",
+    icon: "Trees",
+    description: "Florida outdoor living spaces — patios, lanais, screen enclosures, fence & deck staining across Deltona and Volusia County.",
+    subServices: [
+      { name: "Patio Renovation", slug: "patio-renovation" },
+      { name: "Screen Enclosure Installation", slug: "screen-enclosure-installation" },
+      { name: "Pool Deck Renovation", slug: "pool-deck-renovation" },
+      { name: "Outdoor Kitchen Builder", slug: "outdoor-kitchen-builder" },
+      { name: "Lanai Addition", slug: "lanai-addition" },
+      { name: "Pergola Installation", slug: "pergola-installation" },
+      { name: "Deck Building", slug: "deck-building" },
+      { name: "Fence & Deck Staining", slug: "fence-deck-staining" },
+    ],
+  },
+  {
+    name: "Hurricane Protection",
+    slug: "hurricane-protection",
+    icon: "Shield",
+    description: "Protect your Deltona or Volusia County home with impact windows, doors, storm shutters & roofing built for Florida weather.",
+    subServices: [
+      { name: "Hurricane Impact Windows", slug: "hurricane-impact-windows" },
+      { name: "Hurricane Impact Doors", slug: "hurricane-impact-doors" },
+      { name: "Storm Shutters Installation", slug: "storm-shutters-installation" },
+      { name: "Hurricane Proof Roofing", slug: "hurricane-proof-roofing" },
+    ],
+  },
+  {
+    name: "Flooring Installation",
+    slug: "flooring-installation",
+    icon: "Layers",
+    description: "Hardwood, tile, LVP, laminate & carpet installation across Deltona, DeBary, DeLand, and all of Volusia County.",
+    subServices: [
+      { name: "Hardwood Flooring", slug: "hardwood-flooring" },
+      { name: "Tile Flooring", slug: "tile-flooring" },
+      { name: "Luxury Vinyl Plank", slug: "luxury-vinyl-plank" },
+      { name: "Laminate Flooring", slug: "laminate-flooring" },
+      { name: "Carpet Installation", slug: "carpet-installation" },
+      { name: "Garage Floor Epoxy", slug: "garage-floor-epoxy" },
+    ],
+  },
+  {
+    name: "Roofing",
+    slug: "roofing",
+    icon: "Triangle",
+    description: "Roof replacement, repair, inspection & tile roof installation for Deltona and Volusia County homes — built to handle Florida conditions.",
+    subServices: [
+      { name: "Roof Replacement", slug: "roof-replacement" },
+      { name: "Roof Repair", slug: "roof-repair" },
+      { name: "Roof Inspection", slug: "roof-inspection" },
+      { name: "Tile Roof Installation", slug: "tile-roof-installation" },
+    ],
+  },
+  {
+    name: "Interior Renovation",
+    slug: "interior-renovation",
+    icon: "Paintbrush",
+    description: "Interior painting, drywall repair, crown molding, popcorn ceiling removal & more — popular upgrades for Deltona and Volusia County's older homes.",
+    subServices: [
+      { name: "Interior Painting", slug: "interior-painting" },
+      { name: "Drywall Repair", slug: "drywall-repair" },
+      { name: "Crown Molding Installation", slug: "crown-molding-installation" },
+      { name: "Popcorn Ceiling Removal", slug: "popcorn-ceiling-removal" },
+      { name: "Window Replacement", slug: "window-replacement" },
+      { name: "Door Installation", slug: "door-installation" },
+      { name: "Attic Conversion", slug: "attic-conversion" },
+      { name: "Basement Finishing", slug: "basement-finishing" },
+    ],
+  },
+  {
+    name: "HVAC",
+    slug: "hvac",
+    icon: "Wind",
+    description: "AC installation, HVAC replacement & insulation — keeping Deltona and Volusia County homes comfortable year-round.",
+    subServices: [
+      { name: "AC Installation", slug: "ac-installation" },
+      { name: "HVAC Replacement", slug: "hvac-replacement" },
+      { name: "Insulation Installation", slug: "insulation-installation" },
+    ],
+  },
+  {
+    name: "Painting & Finishing",
+    slug: "painting-finishing",
+    icon: "Brush",
+    description: "Exterior painting, interior painting, cabinet painting, drywall finishing & more — your Deltona-based painting specialists serving all of Volusia County.",
+    subServices: [
+      { name: "Exterior Painting", slug: "exterior-painting" },
+      { name: "Interior Painting", slug: "interior-painting" },
+      { name: "Cabinet Painting & Refinishing", slug: "cabinet-painting" },
+      { name: "Drywall Finishing", slug: "drywall-finishing" },
+      { name: "Framing Renovations", slug: "framing-renovations" },
+      { name: "Pressure Washing + Paint Combo", slug: "pressure-washing-paint" },
+    ],
+  },
+  {
+    name: "Whole Home Remodeling",
+    slug: "whole-home-remodeling",
+    icon: "Building2",
+    description: "Full home renovation and aging-in-place solutions for Deltona, Volusia County, and surrounding communities — financing available.",
+    subServices: [
+      { name: "Luxury Home Renovation", slug: "luxury-home-renovation" },
+      { name: "Home Renovation Financing", slug: "home-renovation-financing" },
+      { name: "Aging in Place Renovation", slug: "aging-in-place-renovation" },
+      { name: "HOA & Rental Property Touch-ups", slug: "hoa-rental-touch-ups" },
+    ],
+  },
+]
+
+export const TESTIMONIALS = [
+  {
+    name: "Maria Rodriguez",
+    city: "Deltona",
+    rating: 5,
+    text: "S&S FL Renovations repainted our entire interior and refinished our kitchen cabinets — the transformation is stunning. Locally based right here in Deltona and it shows — they genuinely care about this community.",
+    service: "Cabinet Painting & Interior Renovation",
+    date: "2025-11-15",
+  },
+  {
+    name: "James & Patricia Wilson",
+    city: "DeBary",
+    rating: 5,
+    text: "We hired them for a master bathroom remodel and couldn't be happier. The team was professional, clean, and communicated every step. Our bathroom looks like it belongs in a luxury home.",
+    service: "Bathroom Renovation",
+    date: "2025-10-08",
+  },
+  {
+    name: "Carlos Mendez",
+    city: "Orange City",
+    rating: 5,
+    text: "They removed our old popcorn ceilings and repainted the whole house — exactly what our older home needed. Friendly crew, fair price, and done ahead of schedule. Highly recommend to any Volusia County homeowner.",
+    service: "Popcorn Ceiling Removal & Painting",
+    date: "2025-09-22",
+  },
+  {
+    name: "Susan Thompson",
+    city: "DeLand",
+    rating: 5,
+    text: "The screen enclosure and outdoor kitchen they built for us is absolutely beautiful. We spend every evening outside now. Best investment we've made in our home — and they were just minutes away in Deltona.",
+    service: "Outdoor Renovations",
+    date: "2025-08-14",
+  },
+  {
+    name: "David & Amy Chen",
+    city: "Sanford",
+    rating: 5,
+    text: "From the initial estimate to the final walkthrough, everything was smooth. They added a Florida room that perfectly extends our living space. The quality is second to none — and the free estimate was no pressure at all.",
+    service: "Room Additions",
+    date: "2025-07-30",
+  },
+  {
+    name: "Robert Martinez",
+    city: "Port Orange",
+    rating: 5,
+    text: "Had the whole house re-floored with luxury vinyl plank and our garage epoxy coated. The crew was efficient, respectful, and the results are gorgeous. Got multiple quotes — S&S was competitive and far superior in quality.",
+    service: "Flooring & Garage Floor Epoxy",
+    date: "2025-06-17",
+  },
+]
+
+export const PROCESS_STEPS = [
+  {
+    step: 1,
+    title: "Free Consultation",
+    description: "Call us or fill out our form to schedule your no-obligation, free in-home estimate. We listen to your vision and assess your space.",
+    icon: "Phone",
+  },
+  {
+    step: 2,
+    title: "Custom Estimate",
+    description: "We come to your Deltona or Volusia County home and provide a detailed, transparent written quote — no hidden fees, no surprises.",
+    icon: "FileText",
+  },
+  {
+    step: 3,
+    title: "Expert Construction",
+    description: "Our licensed crew begins work on your schedule. We keep you updated daily and maintain a clean, safe worksite from start to finish.",
+    icon: "HardHat",
+  },
+  {
+    step: 4,
+    title: "Final Walkthrough",
+    description: "We do a thorough final inspection with you. Nothing is complete until you're 100% satisfied with every detail of your project.",
+    icon: "CheckCircle",
+  },
+]
+
+export const STATS = [
+  { value: "500+", label: "Projects Completed", icon: "Trophy" },
+  { value: "10+", label: "Years in Business", icon: "Calendar" },
+  { value: "4.9★", label: "Google Rating", icon: "Star" },
+  { value: "20+", label: "Cities Served", icon: "MapPin" },
+]
+
+export const FAQ_GENERAL = [
+  {
+    question: "What areas do you serve in Volusia County and nearby?",
+    answer: "We're locally based in Deltona, FL (1757 S Village Dr) and serve all of Volusia County — including DeBary, Orange City, DeLand, Lake Helen, Edgewater, Port Orange, New Smyrna Beach, Daytona Beach, and more. We also serve nearby Seminole and Orange County communities within about 25 miles of Deltona.",
+  },
+  {
+    question: "Are you licensed and insured to work in Volusia County?",
+    answer: "Yes. S&S FL Renovations LLC holds a Florida State Contractor License and carries full general liability insurance and workers' compensation. We serve Deltona, Volusia County, and surrounding communities — proof of insurance is available on request.",
+  },
+  {
+    question: "How do I get a free estimate in Deltona or nearby?",
+    answer: "Simply call us at (380) 214-0824 or fill out our free estimate form online. We serve Deltona homeowners and all of Volusia County — we come to you and typically schedule within 48 hours. No pressure, no obligation.",
+  },
+  {
+    question: "How long do renovation and painting projects typically take?",
+    answer: "Timelines vary by project scope. An interior painting job takes 1–3 days, cabinet painting 3–5 days, a bathroom remodel 1–3 weeks, and a full kitchen renovation 3–6 weeks. We give you a clear timeline in your written estimate — no surprises.",
+  },
+  {
+    question: "Do you handle permits in Volusia County?",
+    answer: "Yes, we manage all necessary permits through Volusia County and surrounding municipalities (Seminole, Orange). Permit costs are included in your estimate — nothing is hidden or added later.",
+  },
+  {
+    question: "Do you offer financing?",
+    answer: "Yes! We partner with flexible financing companies so Deltona and Volusia County homeowners can get the work done now and pay over time. Ask about 0% interest financing options during your free in-home estimate.",
+  },
+  {
+    question: "What warranty do you offer on your work?",
+    answer: "We stand behind every project with a 2-year labor warranty on all renovation and painting work, plus manufacturer warranties on materials. When we finish a job in Deltona or anywhere in Volusia County, it's built — and painted — to last.",
+  },
+  {
+    question: "What makes you different from other contractors in the Deltona area?",
+    answer: "We're your Volusia County neighbor — locally based in Deltona with our own trained crew (no subcontractors). We provide written estimates with no hidden fees and have earned 127+ five-star reviews from real Deltona, DeBary, Orange City, and DeLand homeowners. Friendly, honest, and on time — every time.",
+  },
+]
