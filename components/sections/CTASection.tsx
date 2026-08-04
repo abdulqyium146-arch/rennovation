@@ -1,20 +1,15 @@
-import Link from "next/link"
-import { ArrowRight, Phone, Clock, DollarSign, CheckCircle } from "lucide-react"
+import { Phone, Clock, DollarSign, CheckCircle } from "lucide-react"
 import { COMPANY } from "@/lib/constants"
 
 interface CTASectionProps {
   title?: string
   subtitle?: string
-  primaryLabel?: string
-  primaryHref?: string
   showFinancing?: boolean
 }
 
 export default function CTASection({
   title = "Ready to Transform Your Home?",
-  subtitle = "Join 500+ happy Central Florida homeowners. Your free estimate takes less than 2 minutes to request.",
-  primaryLabel = "Get My Free Estimate",
-  primaryHref = "/free-estimate",
+  subtitle = "Call us now for a free in-home estimate — no pressure, no obligation.",
   showFinancing = true,
 }: CTASectionProps) {
   const currentMonth = new Date().toLocaleString("en-US", { month: "long" })
@@ -63,24 +58,17 @@ export default function CTASection({
           </h2>
           <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">{subtitle}</p>
 
-          {/* CTAs — Call first (primary), Estimate second */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+          {/* CTA — Call only */}
+          <div className="flex justify-center mb-4">
             <a
               href={COMPANY.phoneHref}
-              className="relative group inline-flex items-center justify-center gap-2.5 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-10 py-5 rounded-xl text-lg transition-all shadow-2xl shadow-[#D4922A]/25 hover:shadow-[#D4922A]/50 hover:-translate-y-0.5"
+              className="relative group inline-flex items-center justify-center gap-2.5 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-12 py-5 rounded-xl text-xl transition-all shadow-2xl shadow-[#D4922A]/25 hover:shadow-[#D4922A]/50 hover:-translate-y-0.5"
               aria-label={`Call ${COMPANY.name} now at ${COMPANY.phone}`}
             >
               <span className="absolute inset-0 rounded-xl animate-ping bg-[#D4922A]/25 pointer-events-none" />
-              <Phone size={20} className="relative" />
+              <Phone size={22} className="relative" />
               <span className="relative">Call Now — {COMPANY.phone}</span>
             </a>
-            <Link
-              href={primaryHref}
-              className="group inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white text-white font-bold px-10 py-5 rounded-xl text-lg transition-all hover:bg-white/5"
-            >
-              {primaryLabel}
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
           </div>
           <p className="text-gray-400 text-sm mt-3 mb-7">⚡ We answer 24/7 — average response under 2 minutes</p>
 

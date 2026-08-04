@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Phone, ArrowRight, Star, Shield, CheckCircle, Clock } from "lucide-react"
+import { Phone, Star, Shield, CheckCircle, Clock } from "lucide-react"
 import { motion } from "framer-motion"
 import { COMPANY } from "@/lib/constants"
 
@@ -13,13 +13,12 @@ interface HeroSectionProps {
   subheading: string
   primaryCTA?: string
   primaryCTAHref?: string
+  // kept for API compatibility — unused in pay-per-call mode
 }
 
 export default function HeroSection({
   heading,
   subheading,
-  primaryCTA = "Get My Free Estimate",
-  primaryCTAHref = "/free-estimate",
 }: HeroSectionProps) {
   const currentMonth = new Date().toLocaleString("en-US", { month: "long" })
 
@@ -95,28 +94,18 @@ export default function HeroSection({
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 mb-8"
+              className="flex mb-8"
             >
-              {/* PRIMARY: Call Now — pulsing gold */}
               <a
                 href={COMPANY.phoneHref}
-                className="relative group inline-flex items-center justify-center gap-2.5 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-8 py-4 rounded-xl text-lg transition-all duration-200 shadow-2xl shadow-[#D4922A]/40 hover:shadow-[#D4922A]/60 hover:-translate-y-0.5"
+                className="relative group inline-flex items-center justify-center gap-2.5 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-10 py-5 rounded-xl text-xl transition-all duration-200 shadow-2xl shadow-[#D4922A]/40 hover:shadow-[#D4922A]/60 hover:-translate-y-0.5"
                 itemProp="telephone"
                 aria-label={`Call ${COMPANY.name} now at ${COMPANY.phone}`}
               >
                 <span className="absolute inset-0 rounded-xl animate-ping bg-[#D4922A]/30 pointer-events-none" />
-                <Phone size={20} className="relative shrink-0" />
+                <Phone size={22} className="relative shrink-0" />
                 <span className="relative">Call Now — {COMPANY.phone}</span>
               </a>
-
-              {/* SECONDARY: Free Estimate */}
-              <Link
-                href={primaryCTAHref}
-                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-xl text-lg border border-white/25 hover:border-white/50 transition-all duration-200"
-              >
-                {primaryCTA}
-                <ArrowRight size={20} />
-              </Link>
             </motion.div>
 
             <motion.div
