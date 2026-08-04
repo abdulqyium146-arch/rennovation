@@ -10,7 +10,7 @@ import TrustBar from "@/components/global/TrustBar"
 import CTASection from "@/components/sections/CTASection"
 import FAQAccordion from "@/components/sections/FAQAccordion"
 import TestimonialsCarousel from "@/components/sections/TestimonialsCarousel"
-import { CheckCircle, Phone } from "lucide-react"
+import { CheckCircle, Phone, ArrowRight } from "lucide-react"
 
 interface Props {
   params: Promise<{ category: string }>
