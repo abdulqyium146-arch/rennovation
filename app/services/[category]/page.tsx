@@ -231,17 +231,13 @@ export default async function ServiceCategoryPage({ params }: Props) {
               {service.description} Locally based in Deltona — serving DeBary, Orange City, DeLand, Sanford, and all of Volusia County with licensed crews and transparent pricing.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/free-estimate"
-                className="inline-flex items-center gap-2 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-6 py-4 rounded-lg transition-colors shadow-xl"
-              >
-                Get Free Estimate <ArrowRight size={18} />
-              </Link>
               <a
                 href={COMPANY.phoneHref}
-                className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white text-white font-bold px-6 py-4 rounded-lg transition-colors"
+                className="relative inline-flex items-center gap-2 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-7 py-4 rounded-lg transition-colors shadow-xl"
               >
-                <Phone size={18} /> {COMPANY.phone}
+                <span className="absolute inset-0 rounded-lg animate-ping bg-[#D4922A]/30 pointer-events-none" />
+                <Phone size={18} className="relative" />
+                <span className="relative">Call Now — {COMPANY.phone}</span>
               </a>
             </div>
           </div>
@@ -342,10 +338,11 @@ export default async function ServiceCategoryPage({ params }: Props) {
             ))}
           </div>
           <p className="text-center text-sm text-gray-400 mt-6">
-            Get an accurate quote for your specific project.{" "}
-            <Link href="/free-estimate" className="text-[#D4922A] font-semibold hover:underline">
-              Request a free estimate →
-            </Link>
+            Get an accurate quote — call{" "}
+            <a href={COMPANY.phoneHref} className="text-[#D4922A] font-semibold hover:underline">
+              {COMPANY.phone}
+            </a>
+            {" "}for a free in-home estimate.
           </p>
         </div>
       </section>
@@ -392,8 +389,8 @@ export default async function ServiceCategoryPage({ params }: Props) {
       </section>
 
       <CTASection
-        title={`Start Your ${service.name} Project in Deltona or Nearby`}
-        subtitle="Get a free, detailed estimate for your Volusia County home renovation project — we respond within 24 hours."
+        title={`Start Your ${service.name} Project — Call Now`}
+        subtitle={`Licensed & insured · 4.9★ (127 reviews) · Serving Deltona & all of Volusia County`}
       />
     </>
   )

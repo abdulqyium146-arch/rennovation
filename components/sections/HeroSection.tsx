@@ -1,71 +1,26 @@
 "use client"
 
-import { useRef, useState, useCallback } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import {
-  Phone, ArrowRight, Star, Shield, CheckCircle,
-  Clock, Play, Pause, Volume2, VolumeX,
-} from "lucide-react"
+import { Phone, Star, Shield, CheckCircle, Clock } from "lucide-react"
 import { motion } from "framer-motion"
 import { COMPANY } from "@/lib/constants"
-import imgInterior from "@/public/gallery/home-renovation-interior-central-florida.webp"
 
-const HERO_VIDEO = "/videos/central-florida-home-renovation-hero-orlando-fl.mp4"
-const HERO_POSTER = "/gallery/home-renovation-interior-central-florida.webp"
+const HERO_BG = "/gallery/home-renovation-project-collage-central-florida.webp"
 
 interface HeroSectionProps {
   heading: string
   subheading: string
   primaryCTA?: string
   primaryCTAHref?: string
+  // kept for API compatibility — unused in pay-per-call mode
 }
 
 export default function HeroSection({
   heading,
   subheading,
-  primaryCTA = "Get My Free Estimate",
-  primaryCTAHref = "/free-estimate",
 }: HeroSectionProps) {
   const currentMonth = new Date().toLocaleString("en-US", { month: "long" })
-
-  // ── Background video (desktop full-bleed) ──────────────────────────────
-  const bgVideoRef = useRef<HTMLVideoElement>(null)
-  const [bgMuted, setBgMuted] = useState(true)
-
-  const toggleBgMute = useCallback(() => {
-    if (!bgVideoRef.current) return
-    const next = !bgMuted
-    bgVideoRef.current.muted = next
-    bgVideoRef.current.volume = next ? 0 : 0.6
-    setBgMuted(next)
-  }, [bgMuted])
-
-  // ── Card video (mobile + desktop right column) ─────────────────────────
-  const cardVideoRef = useRef<HTMLVideoElement>(null)
-  const [cardPlaying, setCardPlaying] = useState(false)
-  const [cardMuted, setCardMuted] = useState(false)
-
-  const toggleCardPlay = useCallback(() => {
-    if (!cardVideoRef.current) return
-    if (cardPlaying) {
-      cardVideoRef.current.pause()
-      setCardPlaying(false)
-    } else {
-      cardVideoRef.current.muted = false   // play with sound
-      cardVideoRef.current.volume = 0.8
-      cardVideoRef.current.play()
-      setCardPlaying(true)
-    }
-  }, [cardPlaying])
-
-  const toggleCardMute = useCallback(() => {
-    if (!cardVideoRef.current) return
-    const next = !cardMuted
-    cardVideoRef.current.muted = next
-    cardVideoRef.current.volume = next ? 0 : 0.8
-    setCardMuted(next)
-  }, [cardMuted])
 
   return (
     <section
@@ -74,61 +29,36 @@ export default function HeroSection({
       itemScope
       itemType="https://schema.org/LocalBusiness"
     >
-      {/* ── Layer 1: Dark gradient base (mobile + before video loads) ─── */}
+      {/* ── Layer 1: Background image (all devices) ── */}
+      <Image
+        src={HERO_BG}
+        alt="Home renovation projects completed by S&S FL Renovations LLC — Deltona, FL"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center z-0"
+        itemProp="image"
+      />
+
+      {/* ── Layer 2: Dark overlay ── */}
       <div
-        className="absolute inset-0 z-0"
-        style={{ background: "linear-gradient(135deg,#0A1628 0%,#1B2B4B 40%,#12223A 70%,#0F1923 100%)" }}
+        className="absolute inset-0 z-[1] bg-gradient-to-r from-black/90 via-black/75 to-black/55"
         aria-hidden="true"
       />
 
-      {/* ── Layer 2: Background video — desktop only ──────────────────── */}
-      <video
-        ref={bgVideoRef}
-        className="absolute inset-0 w-full h-full object-cover z-[1] hidden lg:block"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster={HERO_POSTER}
-        aria-hidden="true"
-        itemProp="video"
-      >
-        <source src={HERO_VIDEO} type="video/mp4" />
-      </video>
-
-      {/* ── Layer 3: Dark overlay for text readability ────────────────── */}
-      <div
-        className="absolute inset-0 z-[2] bg-gradient-to-r from-black/85 via-black/65 to-black/40 hidden lg:block"
-        aria-hidden="true"
-      />
-
-      {/* ── Layer 4: Accent glows ────────────────────────────────────── */}
-      <div className="absolute inset-0 z-[3] overflow-hidden pointer-events-none" aria-hidden="true">
+      {/* ── Layer 3: Accent glows ── */}
+      <div className="absolute inset-0 z-[2] overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.07]"
           style={{ background: "radial-gradient(circle,#D4922A 0%,transparent 70%)" }} />
         <div className="absolute bottom-0 -left-40 w-[400px] h-[400px] rounded-full opacity-[0.06]"
           style={{ background: "radial-gradient(circle,#2D4A7A 0%,transparent 70%)" }} />
       </div>
 
-      {/* ── Background video mute toggle (desktop only) ───────────────── */}
-      <button
-        onClick={toggleBgMute}
-        aria-label={bgMuted ? "Unmute background video" : "Mute background video"}
-        className="absolute bottom-14 right-5 z-[5] hidden lg:flex items-center gap-1.5 bg-black/40 hover:bg-black/60 backdrop-blur text-white text-xs px-3 py-1.5 rounded-full border border-white/20 transition-colors"
-      >
-        {bgMuted
-          ? <VolumeX size={13} className="text-[#D4922A]" />
-          : <Volume2 size={13} className="text-[#D4922A]" />
-        }
-        <span>{bgMuted ? "Unmute" : "Mute"}</span>
-      </button>
-
-      {/* ── Layer 5: All content ─────────────────────────────────────── */}
-      <div className="relative z-[4] max-w-7xl mx-auto px-4 sm:px-6 py-16 lg:py-24 w-full">
+      {/* ── Layer 4: Content ── */}
+      <div className="relative z-[3] max-w-7xl mx-auto px-4 sm:px-6 py-16 lg:py-24 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
 
-          {/* LEFT — main copy */}
+          {/* LEFT — copy + CTAs */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -164,22 +94,17 @@ export default function HeroSection({
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 mb-8"
+              className="flex mb-8"
             >
-              <Link
-                href={primaryCTAHref}
-                className="group inline-flex items-center justify-center gap-2 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-8 py-4 rounded-xl text-lg transition-all duration-200 shadow-2xl shadow-[#D4922A]/30 hover:shadow-[#D4922A]/50 hover:-translate-y-0.5"
-              >
-                {primaryCTA}
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
               <a
                 href={COMPANY.phoneHref}
-                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-xl text-lg border border-white/25 hover:border-white/50 transition-all duration-200"
+                className="relative group inline-flex items-center justify-center gap-2.5 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-10 py-5 rounded-xl text-xl transition-all duration-200 shadow-2xl shadow-[#D4922A]/40 hover:shadow-[#D4922A]/60 hover:-translate-y-0.5"
                 itemProp="telephone"
+                aria-label={`Call ${COMPANY.name} now at ${COMPANY.phone}`}
               >
-                <Phone size={20} className="text-[#D4922A]" />
-                {COMPANY.phone}
+                <span className="absolute inset-0 rounded-xl animate-ping bg-[#D4922A]/30 pointer-events-none" />
+                <Phone size={22} className="relative shrink-0" />
+                <span className="relative">Call Now — {COMPANY.phone}</span>
               </a>
             </motion.div>
 
@@ -202,121 +127,64 @@ export default function HeroSection({
             </motion.div>
           </div>
 
-          {/* RIGHT — video card (ALL screen sizes) + reviews/stats (desktop only) */}
+          {/* RIGHT — pay-per-call conversion card */}
           <motion.div
-            initial={{ opacity: 0, x: 0, y: 20 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col gap-4"
           >
-            {/* ── Interactive video card ─────────────────────────────── */}
-            <div
-              className="relative rounded-2xl overflow-hidden shadow-2xl bg-black"
-              aria-label="Renovation project video"
-            >
-              {/* Poster image (visible before play) */}
-              <div className="relative aspect-video">
-                {!cardPlaying && (
-                  <Image
-                    src={imgInterior}
-                    alt="Home renovation completed by S&S FL Renovations — interior renovation and painting Deltona FL"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover object-center"
-                    placeholder="blur"
-                    itemProp="image"
-                  />
-                )}
+            {/* White call card */}
+            <div className="relative rounded-2xl overflow-hidden bg-white shadow-2xl">
+              {/* Gold accent bar */}
+              <div className="h-1.5 bg-gradient-to-r from-[#D4922A] via-[#F0B84A] to-[#D4922A]" />
 
-                {/* Actual video element */}
-                <video
-                  ref={cardVideoRef}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
-                    cardPlaying ? "opacity-100" : "opacity-0"
-                  }`}
-                  playsInline
-                  preload="metadata"
-                  poster={HERO_POSTER}
-                  onEnded={() => setCardPlaying(false)}
-                  title="Deltona FL home renovation and painting — S&S FL Renovations"
-                  aria-label="Video showing S&S FL Renovations contractors at work in Deltona FL — renovation and painting across Volusia County"
-                  itemProp="contentUrl"
-                >
-                  <source src={HERO_VIDEO} type="video/mp4" />
-                  Your browser does not support HTML5 video.
-                </video>
-
-                {/* Dark scrim — bottom only */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent pointer-events-none" />
-
-                {/* Centre play / pause button */}
-                <button
-                  onClick={toggleCardPlay}
-                  aria-label={cardPlaying ? "Pause renovation video" : "Play renovation video"}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#D4922A] hover:bg-[#F0B84A] rounded-full flex items-center justify-center shadow-2xl transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#D4922A] focus:ring-offset-2"
-                >
-                  {cardPlaying
-                    ? <Pause size={26} className="text-white" fill="white" />
-                    : <Play  size={26} className="text-white ml-1" fill="white" />
-                  }
-                </button>
-
-                {/* Volume toggle — bottom-right, only visible when playing */}
-                {cardPlaying && (
-                  <button
-                    onClick={toggleCardMute}
-                    aria-label={cardMuted ? "Unmute video" : "Mute video"}
-                    className="absolute bottom-14 right-3 w-9 h-9 bg-black/60 hover:bg-black/80 backdrop-blur rounded-full flex items-center justify-center border border-white/30 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
-                  >
-                    {cardMuted
-                      ? <VolumeX size={16} className="text-white" />
-                      : <Volume2 size={16} className="text-[#D4922A]" />
-                    }
-                  </button>
-                )}
-
-                {/* Caption bar */}
-                <div className="absolute bottom-0 left-0 right-0 px-4 py-3">
-                  <span className="inline-block bg-[#D4922A] text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide mb-1">
-                    ✓ Real Project
-                  </span>
-                  <p className="text-white font-semibold text-sm leading-tight">
-                    Deltona, FL Renovation & Painting — See Our Work
-                  </p>
-                  <p className="text-[#D4922A] text-xs">
-                    Deltona, FL · S&S FL Renovations LLC
-                  </p>
+              <div className="p-6 text-center">
+                {/* Live availability badge */}
+                <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full mb-4 border border-green-200">
+                  <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                  We&apos;re Available Now — Call Us
                 </div>
+
+                <p className="text-[#1B2B4B] font-bold text-xl mb-1">Talk to a Renovation Expert</p>
+                <p className="text-gray-500 text-sm mb-5">
+                  Free in-home estimate · No pressure · Licensed &amp; Insured
+                </p>
+
+                {/* Big pulsing phone button */}
+                <a
+                  href={COMPANY.phoneHref}
+                  className="relative group flex items-center justify-center gap-3 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold py-5 px-6 rounded-xl text-2xl transition-all shadow-xl shadow-[#D4922A]/30 hover:shadow-[#D4922A]/50 hover:-translate-y-0.5 mb-2"
+                  aria-label={`Call ${COMPANY.name} at ${COMPANY.phone}`}
+                >
+                  <span className="absolute inset-0 rounded-xl animate-ping bg-[#D4922A]/20 pointer-events-none" />
+                  <Phone size={28} className="relative shrink-0" />
+                  <span className="relative">{COMPANY.phone}</span>
+                </a>
+
+                <p className="text-gray-400 text-xs mb-5">⚡ Average response: under 2 minutes</p>
+
+                {/* Google stars */}
+                <div className="flex items-center justify-center gap-1 mb-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={14} className="fill-[#D4922A] text-[#D4922A]" />
+                  ))}
+                  <span className="text-sm font-semibold text-[#1B2B4B] ml-1.5">{COMPANY.rating}</span>
+                </div>
+                <p className="text-gray-400 text-xs">{COMPANY.reviewCount}+ verified Google reviews</p>
+              </div>
+
+              {/* Review quote */}
+              <div className="px-6 pb-6 pt-1 border-t border-gray-100">
+                <blockquote className="text-gray-600 text-sm leading-relaxed italic text-center">
+                  "They repainted our whole house and refinished the kitchen cabinets — stunning results. Locally based right here in Deltona and it shows."
+                </blockquote>
+                <p className="text-xs text-gray-400 mt-1.5 text-center">— Maria R., Deltona, FL</p>
               </div>
             </div>
 
-            {/* Google Reviews — desktop only */}
-            <div className="hidden lg:block bg-white rounded-2xl p-5 shadow-2xl">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-full bg-white shadow-md flex items-center justify-center border border-gray-100 shrink-0">
-                  <span className="font-bold text-base" style={{ color: "#4285F4" }}>G</span>
-                </div>
-                <div>
-                  <p className="font-bold text-[#1B2B4B] text-sm">Google Reviews</p>
-                  <div className="flex items-center gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={12} className="fill-[#D4922A] text-[#D4922A]" />
-                    ))}
-                    <span className="text-xs text-gray-500 ml-1">
-                      {COMPANY.rating} · {COMPANY.reviewCount} reviews
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <blockquote className="text-gray-700 text-sm leading-relaxed italic border-l-2 border-[#D4922A] pl-3">
-                "They repainted our whole house and refinished the kitchen cabinets — stunning results. Locally based in Deltona and it shows. They genuinely care about this community."
-              </blockquote>
-              <p className="text-xs text-gray-400 mt-2">— Maria R., Deltona, FL</p>
-            </div>
-
-            {/* Stats — desktop only */}
-            <div className="hidden lg:grid grid-cols-3 gap-3">
+            {/* Stats row */}
+            <div className="grid grid-cols-3 gap-3">
               {[
                 { value: "500+", label: "Projects Done" },
                 { value: "10+",  label: "Yrs Experience" },
@@ -334,7 +202,7 @@ export default function HeroSection({
       </div>
 
       {/* Bottom wave */}
-      <div className="absolute bottom-0 left-0 right-0 z-[5]" aria-hidden="true">
+      <div className="absolute bottom-0 left-0 right-0 z-[4]" aria-hidden="true">
         <svg viewBox="0 0 1440 60" className="w-full fill-white" preserveAspectRatio="none" height="40">
           <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" />
         </svg>

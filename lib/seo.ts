@@ -66,33 +66,38 @@ export function buildMetadata({
 
 export function buildServiceMetadata(serviceName: string, slug: string): Metadata {
   return buildMetadata({
-    title: `${serviceName} in Deltona, FL | Volusia County`,
-    description: `Expert ${serviceName.toLowerCase()} in Deltona, FL and all of Volusia County. ${BRAND} — licensed, insured, 500+ projects. Free estimate: ${COMPANY.phone}.`,
+    title: `${serviceName} Deltona & Volusia County FL | 4.9★ Licensed`,
+    description: `Expert ${serviceName.toLowerCase()} in Deltona & Volusia County, FL. Licensed & insured, 500+ projects, ⭐4.9 (127 reviews). Call ${COMPANY.phone}. Se Habla Español.`,
     slug: `services/${slug}`,
     keywords: [
       `${serviceName.toLowerCase()} Deltona FL`,
       `${serviceName.toLowerCase()} Volusia County`,
       `${serviceName.toLowerCase()} near me`,
-      `affordable ${serviceName.toLowerCase()} Deltona`,
+      `${serviceName.toLowerCase()} Central Florida`,
+      `best ${serviceName.toLowerCase()} contractor`,
       `${serviceName.toLowerCase()} DeBary FL`,
       `${serviceName.toLowerCase()} Orange City FL`,
+      `${serviceName.toLowerCase()} contractor free estimate`,
     ],
   })
 }
 
 export function buildLocationMetadata(cityName: string, slug: string): Metadata {
   return buildMetadata({
-    title: `Home Renovation & Painting Contractor in ${cityName}, FL`,
-    description: `Trusted renovation and painting contractor in ${cityName}, FL — ${BRAND}, locally based in Deltona. Kitchen, bathroom, painting & full home remodeling. Licensed & insured. Free estimate: ${COMPANY.phone}.`,
+    title: `${cityName}, FL Home Renovation Contractor | 4.9★ Free Estimate`,
+    description: `Top-rated home renovation & remodeling in ${cityName}, FL. Kitchen, bathroom, painting & flooring. ⭐4.9 (127 reviews). Licensed & insured. Call ${COMPANY.phone}. Se Habla Español.`,
     slug: `locations/${slug}`,
     keywords: [
       `home renovation ${cityName} FL`,
+      `renovation contractor ${cityName}`,
+      `remodeling ${cityName} FL`,
+      `home remodeling ${cityName}`,
       `painting contractor ${cityName} FL`,
-      `renovation contractor near me ${cityName}`,
-      `house painting ${cityName} FL`,
       `kitchen remodeling ${cityName}`,
       `bathroom renovation ${cityName}`,
-      `Volusia County renovation contractor`,
+      `home improvement ${cityName} FL`,
+      `remodeling services ${cityName}`,
+      `remodeling company ${cityName}`,
     ],
   })
 }
