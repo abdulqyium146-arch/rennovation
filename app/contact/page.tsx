@@ -1,10 +1,9 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 import { buildMetadata } from "@/lib/seo"
 import { COMPANY } from "@/lib/constants"
 import BreadcrumbNav from "@/components/global/BreadcrumbNav"
 import TrustBar from "@/components/global/TrustBar"
-import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react"
+import { Phone, Mail, MapPin, Clock } from "lucide-react"
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Us",
@@ -84,17 +83,26 @@ export default function ContactPage() {
 
             {/* CTA panel */}
             <div className="lg:col-span-2 flex flex-col gap-6">
-              <div className="bg-[#1B2B4B] rounded-2xl p-8 text-white flex flex-col gap-5">
-                <h2 className="font-display text-2xl font-bold">Get Your Free Estimate</h2>
+              <div className="relative bg-[#1B2B4B] rounded-2xl p-8 text-white flex flex-col gap-5 overflow-hidden">
+                <div className="h-1 absolute top-0 left-0 right-0 bg-gradient-to-r from-[#D4922A] via-[#F0B84A] to-[#D4922A]" />
+                <div className="inline-flex items-center gap-2 bg-green-500/15 border border-green-500/30 text-green-400 text-xs font-bold px-3 py-1.5 rounded-full w-fit">
+                  <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                  Lines Open Now — We Answer 24/7
+                </div>
+                <h2 className="font-display text-2xl font-bold">Call for a Free Estimate</h2>
                 <p className="text-gray-300 leading-relaxed">
-                  The fastest way to get started is our free estimate form. Tell us about your project and we'll schedule an in-home consultation — usually within 48 hours.
+                  Speak directly with a renovation expert — get answers, pricing, and availability instantly. No forms, no wait, no pressure.
                 </p>
-                <Link
-                  href="/free-estimate"
-                  className="inline-flex items-center gap-2 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-6 py-3.5 rounded-lg transition-colors w-fit"
+                <a
+                  href={COMPANY.phoneHref}
+                  className="relative inline-flex items-center gap-3 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-7 py-4 rounded-xl text-xl transition-all shadow-xl w-fit hover:-translate-y-0.5"
+                  aria-label={`Call ${COMPANY.name} now`}
                 >
-                  Request Free Estimate <ArrowRight size={18} />
-                </Link>
+                  <span className="absolute inset-0 rounded-xl animate-ping bg-[#D4922A]/25 pointer-events-none" />
+                  <Phone size={20} className="relative" />
+                  <span className="relative">{COMPANY.phone}</span>
+                </a>
+                <p className="text-gray-400 text-xs">⚡ Average pickup: under 2 minutes · Same-week scheduling available</p>
               </div>
 
               <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">

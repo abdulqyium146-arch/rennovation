@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { DollarSign, ArrowRight, CheckCircle } from "lucide-react"
+import { Phone, DollarSign, CheckCircle } from "lucide-react"
+import { COMPANY } from "@/lib/constants"
 
 export default function FinancingBanner() {
   return (
@@ -15,7 +15,7 @@ export default function FinancingBanner() {
                 Flexible Financing Available
               </p>
               <p className="text-gray-400 text-sm mt-0.5">
-                Don't let budget stop your dream renovation — ask about our 0% interest options.
+                Don't let budget stop your dream renovation — call now and ask about our 0% interest options.
               </p>
             </div>
           </div>
@@ -33,13 +33,15 @@ export default function FinancingBanner() {
             ))}
           </div>
 
-          <Link
-            href="/services/whole-home-remodeling/home-renovation-financing"
-            className="inline-flex items-center gap-2 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-6 py-3.5 rounded-xl text-sm transition-colors whitespace-nowrap shadow-lg shrink-0"
+          <a
+            href={COMPANY.phoneHref}
+            className="relative inline-flex items-center gap-2 bg-[#D4922A] hover:bg-[#F0B84A] text-white font-bold px-6 py-3.5 rounded-xl text-sm transition-colors whitespace-nowrap shadow-lg shrink-0"
+            aria-label={`Call ${COMPANY.name} to ask about financing`}
           >
-            Learn About Financing
-            <ArrowRight size={15} />
-          </Link>
+            <span className="absolute inset-0 rounded-xl animate-ping bg-[#D4922A]/25 pointer-events-none" />
+            <Phone size={15} className="relative" />
+            <span className="relative">Call to Ask About Financing</span>
+          </a>
         </div>
       </div>
     </section>
