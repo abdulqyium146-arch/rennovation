@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { COMPANY } from "./constants"
 
 const BRAND = "S&S FL Renovations LLC"
-const TAGLINE = "Deltona's Renovation & Painting Contractor"
 
 interface SEOProps {
   title: string
@@ -29,22 +28,13 @@ export function buildMetadata({
     description,
     keywords: keywords.join(", "),
     metadataBase: new URL(COMPANY.domain),
-    alternates: {
-      canonical: url,
-    },
+    alternates: { canonical: url },
     openGraph: {
       title: `${title} | ${BRAND}`,
       description,
       url,
       siteName: BRAND,
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
       locale: "en_US",
       type: "website",
     },
@@ -59,15 +49,33 @@ export function buildMetadata({
       : {
           index: true,
           follow: true,
-          googleBot: { index: true, follow: true, "max-image-preview": "large" },
+          googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
         },
   }
 }
 
+// Per-slug title overrides driven by GSC query data
+const SERVICE_TITLE_OVERRIDES: Record<string, string> = {
+  "whole-home-remodeling":  "Whole Home Remodeling Volusia County FL | Licensed Renovation Contractor",
+  "kitchen-remodeling":     "Kitchen Remodeling Deltona & Volusia County FL | 4.9★ Free Estimate",
+  "bathroom-renovation":    "Bathroom Renovation Deltona & Volusia County FL | 4.9★ Free Estimate",
+  "painting-finishing":     "Painting Contractor Deltona & Volusia County FL | Interior & Exterior",
+  "flooring-installation":  "Flooring Installation Deltona & Volusia County FL | Licensed Contractor",
+  "roofing":                "Roofing Contractor Deltona & Volusia County FL | Replacement & Repair",
+  "hvac":                   "HVAC Installation & Replacement Deltona, FL | Volusia County Contractor",
+  "outdoor-renovations":    "Outdoor Renovations Deltona FL | Patios, Lanais & Screen Enclosures",
+  "hurricane-protection":   "Hurricane Impact Windows & Protection Deltona, FL | Volusia County",
+  "interior-renovation":    "Interior Renovation Deltona FL | Painting, Drywall & Remodeling",
+  "room-additions":         "Room Additions Deltona & Volusia County FL | Licensed Contractor",
+}
+
 export function buildServiceMetadata(serviceName: string, slug: string): Metadata {
+  const title = SERVICE_TITLE_OVERRIDES[slug]
+    ?? `${serviceName} Deltona & Volusia County FL | Licensed Contractor`
+
   return buildMetadata({
-    title: `${serviceName} Deltona & Volusia County FL | 4.9★ Licensed`,
-    description: `Expert ${serviceName.toLowerCase()} in Deltona & Volusia County, FL. Licensed & insured, 500+ projects, ⭐4.9 (127 reviews). Call ${COMPANY.phone}. Se Habla Español.`,
+    title,
+    description: `Expert ${serviceName.toLowerCase()} in Volusia County & Central Florida. 500+ projects completed, ⭐${COMPANY.rating} (${COMPANY.reviewCount} reviews). Licensed & insured. Free estimate: ${COMPANY.phone}. Se Habla Español.`,
     slug: `services/${slug}`,
     keywords: [
       `${serviceName.toLowerCase()} Deltona FL`,
@@ -77,27 +85,31 @@ export function buildServiceMetadata(serviceName: string, slug: string): Metadat
       `best ${serviceName.toLowerCase()} contractor`,
       `${serviceName.toLowerCase()} DeBary FL`,
       `${serviceName.toLowerCase()} Orange City FL`,
+      `${serviceName.toLowerCase()} Lake Mary FL`,
       `${serviceName.toLowerCase()} contractor free estimate`,
+      `${serviceName.toLowerCase()} remodeling contractor`,
     ],
   })
 }
 
+// GSC data shows "remodeling" dominates location queries — title leads with it
 export function buildLocationMetadata(cityName: string, slug: string): Metadata {
   return buildMetadata({
-    title: `${cityName}, FL Home Renovation Contractor | 4.9★ Free Estimate`,
-    description: `Top-rated home renovation & remodeling in ${cityName}, FL. Kitchen, bathroom, painting & flooring. ⭐4.9 (127 reviews). Licensed & insured. Call ${COMPANY.phone}. Se Habla Español.`,
+    title: `${cityName} Remodeling & Home Renovation Contractor, FL | Free Estimate`,
+    description: `Top-rated remodeling company in ${cityName}, FL — kitchen remodeling, bathroom renovation, exterior remodeling, painting & home improvement. ⭐${COMPANY.rating} (${COMPANY.reviewCount} reviews) · Licensed & insured · Call ${COMPANY.phone}.`,
     slug: `locations/${slug}`,
     keywords: [
+      `${cityName} remodeling services`,
+      `remodeling company ${cityName}`,
+      `home remodeling ${cityName} FL`,
+      `home improvement company ${cityName}`,
       `home renovation ${cityName} FL`,
       `renovation contractor ${cityName}`,
-      `remodeling ${cityName} FL`,
-      `home remodeling ${cityName}`,
-      `painting contractor ${cityName} FL`,
+      `exterior remodeling ${cityName}`,
       `kitchen remodeling ${cityName}`,
       `bathroom renovation ${cityName}`,
-      `home improvement ${cityName} FL`,
-      `remodeling services ${cityName}`,
-      `remodeling company ${cityName}`,
+      `home remodeling contractor ${cityName}`,
+      `remodeling contractor ${cityName} FL`,
     ],
   })
 }
@@ -136,6 +148,10 @@ export function buildBlogMetadata({
       description: excerpt,
       images: [ogImage],
     },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+    },
   }
 }

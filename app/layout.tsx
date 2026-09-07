@@ -36,23 +36,23 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "S&S FL Renovations LLC | Renovation & Painting Contractor Deltona, FL",
+    default: "S&S FL Renovations LLC | Home Remodeling & Renovation Contractor Deltona, FL",
     template: "%s | S&S FL Renovations LLC",
   },
   description:
-    "S&S FL Renovations LLC — Deltona's trusted home renovation and house painting contractor. Cabinet painting, popcorn ceiling removal, kitchen & bathroom renovations across Volusia County. Licensed, insured, 500+ projects. Free estimate: (386) 900-0642.",
+    "S&S FL Renovations LLC — Deltona's top-rated home remodeling & renovation contractor. Kitchen remodeling, bathroom renovation, cabinet painting, flooring & full-home remodels across Volusia County. Licensed, insured, 500+ projects. Free estimate: (386) 900-0642.",
   metadataBase: new URL(COMPANY.domain),
   alternates: {
     canonical: COMPANY.domain,
   },
   keywords: [
+    "home remodeling Deltona FL",
     "home renovation Deltona FL",
-    "house painting Deltona FL",
-    "renovation contractor Volusia County",
-    "cabinet painting Deltona FL",
-    "popcorn ceiling removal Deltona",
-    "painting contractor DeBary FL",
+    "remodeling contractor Volusia County",
+    "kitchen remodeling Deltona FL",
+    "bathroom renovation Deltona FL",
     "renovation contractor near me Deltona",
+    "home improvement contractor Deltona",
   ].join(", "),
   openGraph: {
     siteName: "S&S FL Renovations LLC",

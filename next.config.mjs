@@ -47,6 +47,17 @@ const nextConfig = {
         destination: "/:path+",
         permanent: true,
       },
+      // Plumbing & electrical pages removed but still getting GSC impressions — 301 to closest relevant service
+      {
+        source: "/services/plumbing/:path*",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services/electrical/:path*",
+        destination: "/services/interior-renovation",
+        permanent: true,
+      },
     ]
   },
 }

@@ -42,12 +42,12 @@ interface CityContent {
 const CITY_CONTENT: Record<string, CityContent> = {
   deltona: {
     aeoAnswer:
-      "S&S FL Renovations LLC is Deltona's locally based home renovation contractor at 1757 S Village Dr, Deltona, FL 32725. Serving all Deltona neighborhoods — Deltona Lakes, Deltona Hills, Saxon Boulevard — with kitchen remodeling, bathroom renovation, painting, flooring, and full-home remodels. Licensed in Volusia County with 500+ completed projects.",
-    intro: `Deltona is home base for S&S FL Renovations LLC — we're located right here at 1757 S Village Dr, Deltona, FL 32725. As Volusia County's largest city, Deltona has a diverse mix of established neighborhoods, HOA communities, and older homes that are prime candidates for renovation and painting upgrades. From cabinet painting in Spring-to-Spring Trail area homes to popcorn ceiling removal across Deltona Lakes, our crew knows this community intimately and treats every project like it's our own home.`,
+      "S&S FL Renovations LLC is Deltona's locally based home remodeling and renovation contractor at 1757 S Village Dr, Deltona, FL 32725. Serving all Deltona neighborhoods — Deltona Lakes, Deltona Hills, Saxon Boulevard — with kitchen remodeling, bathroom renovation, whole-home remodeling, painting, flooring, and room additions. Licensed in Volusia County with 500+ completed projects.",
+    intro: `Deltona is home base for S&S FL Renovations LLC — we're located right here at 1757 S Village Dr, Deltona, FL 32725. As Volusia County's largest city, Deltona is the heart of our home remodeling and renovation services. We handle everything from kitchen remodeling and bathroom renovations to full whole-home remodeling projects across Deltona's diverse neighborhoods — Deltona Lakes, Deltona Hills, and the Saxon Boulevard corridor. Our crew knows this community intimately and delivers remodeling results that HOA communities and long-time homeowners alike trust.`,
     highlights: [
-      "Locally based in Deltona — faster response than any other contractor",
-      "HOA-compliant exterior painting and renovation work",
-      "Specialists in popcorn ceiling removal for Deltona's older homes",
+      "Deltona's #1 locally based home remodeling contractor — fastest response",
+      "Kitchen remodeling, bathroom renovation & whole-home remodeling specialists",
+      "HOA-compliant exterior remodeling, painting & renovation work",
     ],
     landmarks: ["Deltona Lakes", "Deltona Hills", "Spring-to-Spring Trail corridor", "Saxon Boulevard area"],
   },
@@ -64,12 +64,12 @@ const CITY_CONTENT: Record<string, CityContent> = {
   },
   "orange-city": {
     aeoAnswer:
-      "S&S FL Renovations LLC provides home renovation services in Orange City, FL — interior painting, bathroom remodels, popcorn ceiling removal, and kitchen upgrades. Serving Orange City homeowners near Blue Spring State Park and the downtown corridor, based 10 minutes away in Deltona, Volusia County. Free estimates within 48 hours.",
-    intro: `Orange City, FL is a charming Volusia County community just north of DeLand and minutes from our Deltona headquarters. Orange City's established neighborhoods feature many homes built in the 1980s–2000s that are ideal for popcorn ceiling removal, interior painting, and bathroom upgrades. S&S FL Renovations LLC proudly serves Orange City homeowners with the same craftsmanship and transparent pricing that has earned us 127+ five-star reviews across Volusia County.`,
+      "S&S FL Renovations LLC provides home renovation services in Orange City, FL — kitchen remodeling, bathroom renovation, interior painting, flooring, and full-home remodeling. Serving Orange City homeowners near Blue Spring State Park and the downtown corridor from our Deltona base (10 minutes away). Free in-home estimates within 48 hours. Call (386) 900-0642.",
+    intro: `Orange City, FL is a charming Volusia County community minutes from our Deltona headquarters — and one of our most active service areas for home renovation and remodeling. Orange City homes built in the 1980s–2000s are prime candidates for kitchen remodeling, bathroom renovation, popcorn ceiling removal, and interior painting upgrades. S&S FL Renovations LLC has earned 127+ five-star reviews serving Orange City homeowners with honest pricing, fast scheduling, and renovation results built for Florida's climate.`,
     highlights: [
-      "Popcorn ceiling removal specialists for Orange City's older homes",
-      "Interior and exterior painting across all Orange City neighborhoods",
-      "Free estimates within 48 hours for all Orange City homeowners",
+      "Kitchen remodeling & bathroom renovation specialists in Orange City",
+      "Popcorn ceiling removal, interior & exterior painting across Orange City",
+      "Free in-home estimates within 48 hours — based 10 minutes away in Deltona",
     ],
     landmarks: ["Blue Spring State Park adjacent neighborhoods", "Orange City downtown area", "Volusia County Fairgrounds corridor"],
   },
@@ -97,13 +97,13 @@ const CITY_CONTENT: Record<string, CityContent> = {
   },
   "lake-mary": {
     aeoAnswer:
-      "S&S FL Renovations LLC provides home renovation and remodeling services in Lake Mary, FL (Seminole County) — kitchen remodeling, bathroom renovations, exterior remodeling, home improvement contracting, and painting. Serving Lake Mary homeowners with licensed crews, transparent pricing, and free in-home estimates from our Deltona base — no travel surcharge.",
-    intro: `Lake Mary, FL is one of Seminole County's most sought-after communities — known for its master-planned neighborhoods, top-rated schools, and high home values that reward renovation investment. S&S FL Renovations LLC serves Lake Mary homeowners with the full range of renovation and remodeling services: kitchen remodeling, bathroom renovations, exterior remodeling, home improvement projects, cabinet painting, flooring, and whole-home transformations. With Lake Mary home values among the highest in Central Florida, every dollar invested in renovation returns outsized value at resale.`,
+      "S&S FL Renovations LLC is Lake Mary FL's trusted home remodeling contractor — providing kitchen remodeling, bathroom renovation, exterior remodeling, flooring, painting, and home improvement services across Lake Mary and Seminole County. Licensed and insured, no travel surcharge. Free in-home estimates. Call (386) 900-0642.",
+    intro: `Lake Mary, FL is one of Seminole County's most sought-after communities — known for master-planned neighborhoods, top-rated schools, and high home values that demand quality remodeling work. S&S FL Renovations LLC is Lake Mary's go-to home remodeling company, delivering kitchen remodeling, bathroom renovation, exterior remodeling, flooring installation, and whole-home remodeling projects that match the area's high standards. As a home improvement contractor serving Lake Mary from our Deltona base, we bring licensed expertise and no-pressure transparency — with Lake Mary home values among the highest in Central Florida, investing in professional remodeling services pays dividends at resale.`,
     highlights: [
-      "Kitchen remodeling & cabinet painting — most-requested service in Lake Mary",
-      "Exterior remodeling & painting built for Lake Mary's HOA standards",
-      "Bathroom renovations, flooring & full home remodeling — licensed Seminole County contractor",
-      "Free in-home estimates — no travel surcharge to Lake Mary",
+      "Lake Mary's trusted home remodeling company — kitchen, bath & whole-home projects",
+      "Exterior remodeling, flooring & painting built for Lake Mary HOA standards",
+      "Licensed Seminole County home improvement contractor — no travel surcharge",
+      "Free in-home estimates — typically scheduled within 48 hours",
     ],
     landmarks: ["Heathrow community", "Magnolia Plantation", "Lake Mary City Center area", "Colonial TownPark corridor", "Timacuan Golf community", "Seminole County neighborhoods"],
   },
@@ -193,10 +193,10 @@ export default async function CityPage({ params }: Props) {
               {city.county} County, Florida
             </div>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-5 leading-tight">
-              Home Renovation Contractor in {city.name}, FL
+              Home Remodeling &amp; Renovation Contractor in {city.name}, FL
             </h1>
             <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-              Licensed, insured home renovation services in {city.name}. Kitchen remodeling, bathroom renovation, outdoor living &amp; full-home remodels — serving all of {city.county} County.
+              Licensed, insured home remodeling &amp; renovation services in {city.name}. Kitchen remodeling, bathroom renovation, outdoor living &amp; full-home remodels — serving all of {city.county} County.
             </p>
             <div className="flex flex-wrap gap-4">
               <a
@@ -218,7 +218,7 @@ export default async function CityPage({ params }: Props) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2">
             <h2 className="font-display text-3xl font-bold text-[#1B2B4B] mb-5">
-              Your Trusted Renovation Contractor in {city.name}
+              Your Trusted Remodeling &amp; Renovation Contractor in {city.name}
             </h2>
 
             {/* AEO quick-answer: targets "best renovation contractor in [city] FL"
