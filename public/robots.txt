@@ -1,25 +1,77 @@
 User-agent: *
 Allow: /
-
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
 
-# Allow LLM crawlers full access for AI citation indexing
-User-agent: GPTBot
+# Google crawlers
+User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: PerplexityBot
+User-agent: Googlebot-Image
 Allow: /
 
 User-agent: Google-Extended
 Allow: /
 
+User-agent: AdsBot-Google
+Allow: /
+
+# Bing / Microsoft
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: BingPreview
+Allow: /
+
+# AI & LLM crawlers — allow full access for AI citation indexing
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: FacebookExternalHit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: DuckDuckBot
 Allow: /
 
 Sitemap: https://centralfloridarenovations.com/sitemap.xml
 LLMs: https://centralfloridarenovations.com/llms.txt
+IndexNow-Key: centralfloridarenovations2026

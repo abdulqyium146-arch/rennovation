@@ -37,6 +37,19 @@ export const CITIES = [
   { name: "Altamonte Springs", slug: "altamonte-springs", county: "Seminole" },
   { name: "Lake Mary", slug: "lake-mary", county: "Seminole" },
   { name: "Oviedo", slug: "oviedo", county: "Seminole" },
+  { name: "Orlando", slug: "orlando", county: "Orange" },
+  { name: "Kissimmee", slug: "kissimmee", county: "Osceola" },
+  { name: "Winter Park", slug: "winter-park", county: "Orange" },
+  { name: "Maitland", slug: "maitland", county: "Orange" },
+  { name: "Winter Garden", slug: "winter-garden", county: "Orange" },
+  { name: "Windermere", slug: "windermere", county: "Orange" },
+  { name: "Celebration", slug: "celebration", county: "Osceola" },
+  { name: "Clermont", slug: "clermont", county: "Lake" },
+  { name: "Casselberry", slug: "casselberry", county: "Seminole" },
+  { name: "St. Cloud", slug: "st-cloud", county: "Osceola" },
+  { name: "Lakeland", slug: "lakeland", county: "Polk" },
+  { name: "Melbourne", slug: "melbourne", county: "Brevard" },
+  { name: "Palm Bay", slug: "palm-bay", county: "Brevard" },
 ]
 
 export const SERVICES = [
