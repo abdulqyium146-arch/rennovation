@@ -1,9 +1,9 @@
 export const COMPANY = {
   name: "S&S FL Renovations LLC",
-  phone: "(213) 841-6924",
-  phoneHref: "tel:+12138416924",
-  phone2: "(213) 841-6924",
-  phone2Href: "tel:+12138416924",
+  phone: "(386) 900-0642",
+  phoneHref: "tel:+13869000642",
+  phone2: "(386) 900-0642",
+  phone2Href: "tel:+13869000642",
   email: "info@centralfloridarenovations.com",
   address: "1757 S Village Dr, Deltona, FL 32725",
   licenseNumber: "FL-CGC1234567",
@@ -286,7 +286,7 @@ export const FAQ_GENERAL = [
   },
   {
     question: "How do I get a free estimate in Deltona or nearby?",
-    answer: "Simply call us at (213) 841-6924 or fill out our free estimate form online. We serve Deltona homeowners and all of Volusia County — we come to you and typically schedule within 48 hours. No pressure, no obligation.",
+    answer: "Simply call us at (386) 900-0642 or fill out our free estimate form online. We serve Deltona homeowners and all of Volusia County — we come to you and typically schedule within 48 hours. No pressure, no obligation.",
   },
   {
     question: "How long do renovation and painting projects typically take?",

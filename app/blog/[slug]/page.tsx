@@ -189,7 +189,7 @@ Even if you don't sell immediately, a well-done kitchen dramatically improves da
 
 Every kitchen is different. The only way to know your exact cost is a free in-home consultation with our team. We measure your space, discuss your goals, and provide a detailed written quote — with no hidden fees and no obligation.
 
-**Call us at [(213) 841-6924](tel:+12138416924) or [request a free estimate online](/free-estimate).**
+**Call us at [(386) 900-0642](tel:+13869000642) or [request a free estimate online](/free-estimate).**
   `,
 
   "best-flooring-for-florida-humidity-and-heat": `
@@ -252,7 +252,7 @@ More affordable than LVP but NOT waterproof — laminate swells immediately when
 
 S&S FL Renovations installs all flooring types across Deltona, Volusia County, and surrounding communities. Get a free estimate for your flooring project — we'll help you choose the right material for your home and climate.
 
-**Call [(213) 841-6924](tel:+12138416924) or [request a free estimate](/free-estimate).**
+**Call [(386) 900-0642](tel:+13869000642) or [request a free estimate](/free-estimate).**
   `,
 }
 
@@ -274,7 +274,7 @@ S&S FL Renovations LLC has been helping Central Florida homeowners make smart re
 
 Get a free, no-obligation estimate from our licensed and insured team. We serve Deltona, DeBary, Orange City, DeLand, Daytona Beach, Sanford, and all of Volusia County.
 
-**Call [(213) 841-6924](tel:+12138416924) or [request a free estimate online](/free-estimate).**
+**Call [(386) 900-0642](tel:+13869000642) or [request a free estimate online](/free-estimate).**
   `
 }
 

@@ -3,7 +3,7 @@ import { Playfair_Display, DM_Sans, Oswald } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/global/Header"
 import Footer from "@/components/global/Footer"
-import { localBusinessSchema, websiteSchema } from "@/lib/schemas"
+import { localBusinessSchema, websiteSchema, organizationSchema } from "@/lib/schemas"
 import { SchemaMarkup } from "@/components/global/SchemaMarkup"
 import { COMPANY } from "@/lib/constants"
 
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     template: "%s | S&S FL Renovations LLC",
   },
   description:
-    "S&S FL Renovations LLC — Deltona's trusted home renovation and house painting contractor. Cabinet painting, popcorn ceiling removal, kitchen & bathroom renovations across Volusia County. Licensed, insured, 500+ projects. Free estimate: (213) 841-6924.",
+    "S&S FL Renovations LLC — Deltona's trusted home renovation and house painting contractor. Cabinet painting, popcorn ceiling removal, kitchen & bathroom renovations across Volusia County. Licensed, insured, 500+ projects. Free estimate: (386) 900-0642.",
   metadataBase: new URL(COMPANY.domain),
   alternates: {
     canonical: COMPANY.domain,
@@ -80,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             LocalBusiness: the primary entity for local search ranking signals.
             WebSite: enables the sitelinks searchbox in Google Search.
             Page-specific schemas (Service, HowTo, FAQPage, etc.) are added per-route. */}
-        <SchemaMarkup schema={[localBusinessSchema, websiteSchema] as Record<string, unknown>[]} />
+        <SchemaMarkup schema={[localBusinessSchema, websiteSchema, organizationSchema] as Record<string, unknown>[]} />
 
         {/* Google Tag Manager — replace GTM-XXXXXX with your container ID */}
         <script

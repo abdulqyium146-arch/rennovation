@@ -107,8 +107,8 @@ export default function RenovationVideo({
           >
             Central Florida Renovations — Serving Orlando, Kissimmee, Winter Park & surrounding areas.
             Licensed &amp; Insured. Call{" "}
-            <a href="tel:+12138416924" className="text-[#D4922A] font-semibold">
-              (213) 841-6924
+            <a href="tel:+13869000642" className="text-[#D4922A] font-semibold">
+              (386) 900-0642
             </a>
           </p>
         </div>

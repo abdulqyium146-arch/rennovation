@@ -112,6 +112,55 @@ export const localBusinessSchema = {
       name: "Florida Department of Business and Professional Regulation",
     },
   },
+  // ContactPoint — AEO/AIO signal: AI reads this to answer "how do I call S&S FL Renovations?"
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+13869000642",
+      contactType: "sales",
+      areaServed: "US-FL",
+      availableLanguage: ["English", "Spanish"],
+      hoursAvailable: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        opens: "07:00",
+        closes: "20:00",
+      },
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+13869000642",
+      contactType: "customer service",
+      areaServed: "US-FL",
+      availableLanguage: ["English", "Spanish"],
+    },
+  ],
+  // potentialAction — surfaces "Call" and "Request Quote" in AI Overviews + Google rich results
+  potentialAction: [
+    {
+      "@type": "ReserveAction",
+      name: "Get Free Estimate",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://centralfloridarenovations.com/free-estimate",
+        actionPlatform: [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform",
+        ],
+      },
+    },
+    {
+      "@type": "OrderAction",
+      name: "Call for Free Estimate",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "tel:+13869000642",
+        actionPlatform: [
+          "http://schema.org/MobileWebPlatform",
+        ],
+      },
+    },
+  ],
   // knowsAbout helps LLMs associate the entity with topic clusters
   knowsAbout: [
     "Kitchen Remodeling",
@@ -176,16 +225,28 @@ export const organizationSchema = {
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: COMPANY.phone,
+      telephone: "+13869000642",
       contactType: "customer service",
       areaServed: "US-FL",
-      // Se Habla Español — signals bilingual service to local search
+      availableLanguage: ["English", "Spanish"],
+      hoursAvailable: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        opens: "07:00",
+        closes: "20:00",
+      },
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+13869000642",
+      contactType: "sales",
+      areaServed: "US-FL",
       availableLanguage: ["English", "Spanish"],
     },
     {
       "@type": "ContactPoint",
       email: COMPANY.email,
-      contactType: "sales",
+      contactType: "technical support",
       areaServed: "US-FL",
       availableLanguage: ["English", "Spanish"],
     },
